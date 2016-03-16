@@ -2,7 +2,7 @@
     <architecture>Nios II</architecture>
     <system>
         <sample_system_title>DE1-SoC Computer for Nios II</sample_system_title>
-        <cable>null</cable>
+        <cable>DE-SoC [USB-1]</cable>
         <processor>Nios2</processor>
         <reset_processor_during_load>false</reset_processor_during_load>
         <terminal>JTAG_UART</terminal>

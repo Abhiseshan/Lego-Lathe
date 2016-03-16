@@ -34,31 +34,33 @@ ISR:
 	stw 	ea, 8(sp)
 	stw 	ra, 12(sp)
 	
-	#irq1 (Pushbutton) 
-	rdctl 	et, ipending
-	andi 	et, et, 0x2
-	bne 	et, r0, InterruptPushButton
-	
 	#irq0 (timer) 
 	rdctl 	et, ipending
 	andi 	et, et, 0x1
 	bne 	et, r0, InterruptTimer
+	
+	#irq1 (Pushbutton) 
+	rdctl 	et, ipending
+	andi 	et, et, 0x2
+	bne 	et, r0, InterruptPushButton
 	
 	br 		exitInterrupt
 	
 InterruptPushButton:
 	movia	et, PUSHBUTTONS
 	ldwio 	r9, (et)
-	andi 	r9, r9, 0xF					#Mask all the bits
-	movi 	r10, 0x4
+	stwio 	r0, 12(et)
+	andi 	r9, r9, 0xFFF					#Mask all the bits
+	movi 	r10, 0xB
 	beq 	r10, r9, STOP
-	movi 	r10, 0x2
+	movi 	r10, 0xD
 	beq 	r10, r9, START
 	
 	br 		exitInterrupt
 	
 STOP:
 	movi 	r8, 0x0
+	stwio 	r0, 12(et)
 	
 	#Stop the interrupt timer
 	movia 	et, TIMER_INTERRUPT
@@ -73,6 +75,7 @@ STOP:
 	
 START:
 	movi 	r8, 0x1
+	stwio 	r0, 12(et)
 	
 	#Start the timer interrupt
 	movia 	et, TIMER_INTERRUPT
@@ -81,14 +84,13 @@ START:
 	
 InterruptTimer:
 	movia 	et, TIMER_INTERRUPT
-	ldwio 	r9, (et)
-	andi 	r9, r9, 0b10
-	stw 	r9, (et)  					#set timeout bit to 0
-
-	#move the base motor
+	stw 	r0, (et)  					#set timeout bit to 0
+	
+	#Check for start mode
 	movi 	r9, 0x1
 	bne 	r8, r9, exitInterrupt		#If mode not start, exit
-	
+
+	#move the base motor	
 	movia  	r9, 0xfffffffc 				#enabling the motor 0, direction to forward
   	stwio  	r9, 0(r15)					#Turn on motor
 	call 	timer
@@ -104,13 +106,13 @@ InterruptTimer:
 	stwio 	r9, 0(r15)
 	
 exitInterrupt:
-	ldw 	et, (sp)
-	wrctl 	estatus, et
 	ldw 	et, 4(sp)
+	wrctl 	estatus, et
+	ldw 	et, (sp)
 	ldw 	ea, 8(sp)
 	ldw 	ra, 12(sp)
 	addi 	sp, sp, 16
-
+	
 	subi 	ea, ea, 4 					#set the return address back to account for the disturbed execution
 	eret
 	
@@ -119,32 +121,35 @@ exitInterrupt:
 
 _start: 
 	movia 	r15, LEGOCONTROLLER
+	movia 	r8, 0x0						#Set it initially to stop mode
 	
 	#Initialize the LEGO Controller
 	movia  	r9, 0x07f557ff       		#Set the direction registers
 	stwio 	r9, 4(r15)
 	movia 	r9, 0xffffffff
-	stwio 	r9, 0(r8)
+	stwio 	r9, 0(r15)
 
+	
 	#Initialize the interrupt timer
 	movia 	r9, TIMER_INTERRUPT
 	movui 	r10, %lo (interrupt_time)
 	stwio 	r10, 8(r9)
 	movui 	r10, %hi (interrupt_time)
 	stwio 	r10, 12(r9)
-	stwio 	r0, 0(r8)
+	stwio 	r0, 0(r9)
 	
 	#Start the timer with interrupt and continous enabled
-	movui 	r10, 0b111
+	movi 	r10, 0b0111
 	stwio 	r10, 4(r9)
 	
 	#Initialize the push buttons 1 and 2 with interrupts
 	movia 	r9, PUSHBUTTONS
 	movi 	r10, 0x6
 	stwio 	r10, 8(r9)
+	stwio 	r0, 12(r9)
 	
 	#Enable pushbuttons and interrupt timer in the IRQ Line
-	movi 	r9, 0x03
+	movi 	r9, 0x02
 	wrctl 	ctl3, r9
 	
 	#Set PIE bit to 1
