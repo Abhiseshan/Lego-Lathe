@@ -19,4 +19,3 @@ poll:
 	beq 		r17, r0, poll
 	
 	ret
-	
