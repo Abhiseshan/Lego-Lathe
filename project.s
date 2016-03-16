@@ -1,6 +1,6 @@
 .equ TIMER_INTERRUPT, 0xFF202000
 .equ interrupt_time, 100000
-.equ PUSHBUTTON, 0xFF200050
+.equ PUSHBUTTONS, 0xFF200050
 .equ LEGOCONTROLLER, 0xFF200060
 
 /*
@@ -17,6 +17,11 @@
  * Motor 1: Drill movement motor
  * Motor 2: Drill motor
  * Motor 3: Material Rotation Motor
+ *
+ * Pushbuttons
+ * Pushbutton 1: Start buttons
+ * Pushbutton 2: Stop button
+ *
  */
 
 .section .exceptions, "ax"
@@ -42,7 +47,7 @@ ISR:
 	br 		exitInterrupt
 	
 InterruptPushButton:
-	movia	et, PUSHBUTTON
+	movia	et, PUSHBUTTONS
 	ldwio 	r9, (et)
 	movi 	r10, 0xF 				#Mask all the bits
 	andi 	r9, r9, r10
@@ -116,7 +121,7 @@ _start:
 	movia 	r15, LEGOCONTROLLER
 	
 	#Initialize the LEGO Controller
-	movia  	r9, 0x07f557ff       	/* Set the direction registers */
+	movia  	r9, 0x07f557ff       		#Set the direction registers
 	stwio 	r9, 4(r15)
 	movia 	r9, 0xffffffff
 	stwio 	r9, 0(r8)
@@ -129,8 +134,21 @@ _start:
 	stwio 	r10, 12(r9)
 	stwio 	r0, 0(r8)
 	
-	#Start the timer
+	#Start the timer with interrupt and continous enabled
 	movui 	r10, 0b111
 	stwio 	r10, 4(r9)
 	
+	#Initialize the push buttons 1 and 2 with interrupts
+	movia 	r9, PUSHBUTTONS
+	movi 	r10, 0x6
+	stwio 	r10, 8(r9)
 	
+	#Enable pushbuttons and interrupt timer in the IRQ Line
+	movi 	r9, 0x03
+	wrctl 	ctl3, r9
+	
+	#Set PIE bit to 1
+	movi 	r9, 1
+	wrctl 	ctl0, r9
+	
+/***************************** END *****************************/
