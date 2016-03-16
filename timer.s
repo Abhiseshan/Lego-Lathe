@@ -1,5 +1,5 @@
 .equ TIMER_POLL, 0xFF202020 
-.equ TIME, 100000
+.equ time, 100000
 
 .global timer
 

@@ -49,8 +49,7 @@ ISR:
 InterruptPushButton:
 	movia	et, PUSHBUTTONS
 	ldwio 	r9, (et)
-	movi 	r10, 0xF 				#Mask all the bits
-	andi 	r9, r9, r10
+	andi 	r9, r9, 0xF					#Mask all the bits
 	movi 	r10, 0x4
 	beq 	r10, r9, STOP
 	movi 	r10, 0x2
@@ -87,7 +86,8 @@ InterruptTimer:
 	stw 	r9, (et)  					#set timeout bit to 0
 
 	#move the base motor
-	bne 	r8, 0x1, exitInterrupt		#If mode not start, exit
+	movi 	r9, 0x1
+	bne 	r8, r9, exitInterrupt		#If mode not start, exit
 	
 	movia  	r9, 0xfffffffc 				#enabling the motor 0, direction to forward
   	stwio  	r9, 0(r15)					#Turn on motor
