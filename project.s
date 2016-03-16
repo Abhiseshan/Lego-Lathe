@@ -1,5 +1,5 @@
 .equ TIMER_INTERRUPT, 0xFF202000
-.equ interrupt_time, 100000
+.equ interrupt_time, 100000000
 .equ PUSHBUTTONS, 0xFF200050
 .equ LEGOCONTROLLER, 0xFF200060
 
@@ -48,19 +48,19 @@ ISR:
 	
 InterruptPushButton:
 	movia	et, PUSHBUTTONS
-	ldwio 	r9, (et)
-	stwio 	r0, 12(et)
-	andi 	r9, r9, 0xFFF					#Mask all the bits
-	movi 	r10, 0xB
+	ldwio 	r9, 12(et)
+	movi 	r10, 0xFF
+	stwio 	r10, 12(et)
+	andi 	r9, r9, 0x0F					#Mask all the bits
+	movi 	r10, 0x2
 	beq 	r10, r9, STOP
-	movi 	r10, 0xD
+	movi 	r10, 0x4
 	beq 	r10, r9, START
 	
 	br 		exitInterrupt
 	
 STOP:
 	movi 	r8, 0x0
-	stwio 	r0, 12(et)
 	
 	#Stop the interrupt timer
 	movia 	et, TIMER_INTERRUPT
@@ -75,7 +75,6 @@ STOP:
 	
 START:
 	movi 	r8, 0x1
-	stwio 	r0, 12(et)
 	
 	#Start the timer interrupt
 	movia 	et, TIMER_INTERRUPT
@@ -91,19 +90,20 @@ InterruptTimer:
 	bne 	r8, r9, exitInterrupt		#If mode not start, exit
 
 	#move the base motor	
-	movia  	r9, 0xfffffffc 				#enabling the motor 0, direction to forward
+	movia  	r9, 0xffffff0c 				#enabling the motor 0, direction to forward
   	stwio  	r9, 0(r15)					#Turn on motor
 	call 	timer
-	movia	r9, 0xffffffff			
-	stwio 	r9, 0(r15)					#Turn off motor
+	movia	r9, 0xffffff0f			
+	stwio 	r9, 0(r15)					#Turn off motor keeping drill and material motor on
 	
+	/*
 	#Start the drill motor
 	movia 	r9, 0xffffffcf
 	stwio 	r9, 0(r15)
 	
 	#Start the material rotation motor
 	movia 	r9, 0xffffff3f
-	stwio 	r9, 0(r15)
+	stwio 	r9, 0(r15) */
 	
 exitInterrupt:
 	ldw 	et, 4(sp)
@@ -112,6 +112,7 @@ exitInterrupt:
 	ldw 	ea, 8(sp)
 	ldw 	ra, 12(sp)
 	addi 	sp, sp, 16
+	wrctl 	ipending,r0
 	
 	subi 	ea, ea, 4 					#set the return address back to account for the disturbed execution
 	eret
@@ -144,12 +145,13 @@ _start:
 	
 	#Initialize the push buttons 1 and 2 with interrupts
 	movia 	r9, PUSHBUTTONS
-	movi 	r10, 0x6
+	movia 	r10, 0xe
 	stwio 	r10, 8(r9)
-	stwio 	r0, 12(r9)
+	movi 	r10, 0xFF
+	stwio 	r10, 12(r9)
 	
 	#Enable pushbuttons and interrupt timer in the IRQ Line
-	movi 	r9, 0x02
+	movi 	r9, 0x03
 	wrctl 	ctl3, r9
 	
 	#Set PIE bit to 1
