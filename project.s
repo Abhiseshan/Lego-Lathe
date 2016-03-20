@@ -2,6 +2,7 @@
 .equ interrupt_time, 100000000
 .equ PUSHBUTTONS, 0xFF200050
 .equ LEGOCONTROLLER, 0xFF200060
+.equ time_baseMotor, 100000
 
 /*
  * Fixed Registers
@@ -32,17 +33,17 @@ ISR:
 	rdctl 	et, estatus 
 	stw 	et, 4(sp)
 	stw 	ea, 8(sp)
-	stw 	ra, 12(sp)
+	stw 	ra, 12(sp)	
+		
+	#irq1 (Pushbutton) 
+	rdctl 	et, ipending
+	andi 	et, et, 0x2
+	bne 	et, r0, InterruptPushButton
 	
 	#irq0 (timer) 
 	rdctl 	et, ipending
 	andi 	et, et, 0x1
 	bne 	et, r0, InterruptTimer
-	
-	#irq1 (Pushbutton) 
-	rdctl 	et, ipending
-	andi 	et, et, 0x2
-	bne 	et, r0, InterruptPushButton
 	
 	br 		exitInterrupt
 	
@@ -81,6 +82,8 @@ START:
 	movia 	r9, 0b0111
 	stw		r9, 4(et)
 	
+	call 	audio
+	
 InterruptTimer:
 	movia 	et, TIMER_INTERRUPT
 	stw 	r0, (et)  					#set timeout bit to 0
@@ -92,18 +95,19 @@ InterruptTimer:
 	#move the base motor	
 	movia  	r9, 0xffffff0c 				#enabling the motor 0, direction to forward
   	stwio  	r9, 0(r15)					#Turn on motor
+	movui 	r4, %lo(time_baseMotor) 	
+	movui 	r5, %hi(time_baseMotor)
 	call 	timer
 	movia	r9, 0xffffff0f			
 	stwio 	r9, 0(r15)					#Turn off motor keeping drill and material motor on
 	
-	/*
 	#Start the drill motor
 	movia 	r9, 0xffffffcf
 	stwio 	r9, 0(r15)
 	
 	#Start the material rotation motor
 	movia 	r9, 0xffffff3f
-	stwio 	r9, 0(r15) */
+	stwio 	r9, 0(r15)
 	
 exitInterrupt:
 	ldw 	et, 4(sp)
