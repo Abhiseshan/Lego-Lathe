@@ -6,15 +6,20 @@
 .global audio
 
 audio: 
-	movia 	r2, ADDR_AUDIODACFIFO
-	movia 	r3, ALARM_SOUND
-	stwio 	r3,	8(r2)      /* Echo to left channel */
-	stwio 	r3,	12(r2)     /* Echo to right channel */
+	movia 	r16, ADDR_AUDIODACFIFO
+	movia 	r17, ALARM_SOUND
+	stwio 	r17,	8(r16)      /* Echo to left channel */
+	stwio 	r17,	12(r16)     /* Echo to right channel */
 	movui 	r4, %lo(time_alarm) 	
 	movui 	r5, %hi(time_alarm)
+	subi	sp, sp, 4
+	stw 	ra, 0(sp)
 	call 	timer
-	movia 	r3, ALARM_SOUND1
-	stwio 	r3,	8(r2)      /* Echo to left channel */
-	stwio 	r3,	12(r2)     /* Echo to right channel */
+	movia 	r17, ALARM_SOUND1
+	stwio 	r17,	8(r16)      /* Echo to left channel */
+	stwio 	r17,	12(r16)     /* Echo to right channel */
+	call 	timer
+	ldw 	ra, 0(sp)
+	addi 	sp, sp, 4
 	ret
 	
