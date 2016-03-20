@@ -162,6 +162,94 @@ _start:
 	movi 	r9, 1
 	wrctl 	ctl0, r9
 	
+firstsensor:	
+
+    beq r8,r0,stop2
+	movia r9, 0xFFFFFBF3				#enable sensor 0 and motor 1
+	stwio r9, 0(r15)
+    ldwio	r10,0(r8)
+	srli	r10,r10,11
+	andi	r10,r10,0x1
+	bne	r0,	r10,firstsensor
+
+stop2:
+	#Stop all the motors (drill motor and material rotation motor)
+	movia	r9, 0xffffffff			
+	stwio 	r9, 0(r15)	
+	br firstsensor
+	
+	
+readfirstsensor:
+	ldwio   r11, 0(r15)
+	srli    r11, r11, 27
+	andi    r11, r11, 0x0f 	
+	
+secondsensor:	
+	movia r9, 0xFFFFEFF3				#enable sensor 1 and motor 1
+	stwio r9, 0(r15)
+    ldwio	r10,0(r15)
+	srli	r10,r10,11
+	andi	r10,r10,0x1
+	bne	r0,	r10,secondsensor
+	
+readsecondsensor:
+	ldwio   r12, 0(r15)
+	srli    r12, r12, 27
+	andi    r12, r12, 0x0f 	
+
+thirdsensor:	
+	movia r9, 0xFFFFBFF3				#enable sensor 2 and motor 1
+	stwio r9, 0(r15)
+    ldwio	r10,0(r15)
+	srli	r10,r10,11
+	andi	r10,r10,0x1
+	bne	r0,	r10,thirdsensor
+	
+readthirdsensor:
+	ldwio   r13, 0(r15)
+	srli    r13, r13, 27
+	andi    r13, r13, 0x0f 	
+
+	movi 	r14, 0x5
+	bgt		r11, r14, forward	
+	#bgt	r13, r14, backward
+	#bgt 	r12, r14, nothing
+	
+forward:
+	movia r9, 0xFFFFFFAA  #enable the motor 1 and set direction to forward
+	stwio  r10, 0(r15)	
+	movui 	r4, %lo(time_baseMotor) 	
+	movui 	r5, %hi(time_baseMotor)
+	call 	timer
+	movia	r10, 0xFFFFFFAE
+	stwio 	r10, 0(r15)
+	movui 	r4, %lo(time_baseMotor) 	
+	movui 	r5, %hi(time_baseMotor)
+	call 	timer
+	br firstsensor		
+	
+#backward:
+#	movia r9, 0xFFFFFFAA	#enable the motor 1 and set direction to backward
+#	stwio  r13, 0(r15)	
+#	movui 	r4, %lo(time_baseMotor) 	
+#	movui 	r5, %hi(time_baseMotor)
+#	call 	timer
+#	movia	r13, 0xFFFFFFAE
+#	stwio 	r13, 0(r15)
+#	movui 	r4, %lo(time_baseMotor) 	
+#	movui 	r5, %hi(time_baseMotor)
+#	call 	timer
+#	br firstsensor	
+	
+#nothing:
+#	movia  r9, 0xFFFFFFAE     	/* motor disabled */
+# 	stwio  r9, 0(r15)
+#	movui 	r4, %lo(time_baseMotor) 	
+#	movui 	r5, %hi(time_baseMotor)
+#	call 	timer
+#	br firstsensor	
+	
+	
 end_loop:
 	br 		end_loop
 	
