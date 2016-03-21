@@ -116,28 +116,39 @@ readfirstsensor:
 	srli    r11, r11, 27
 	andi    r11, r11, 0x0f 	
 	
-#secondsensor:	
-#	movia r9, 0xFFFFEB0F				#enable sensor 1 and motor 1
-#	stwio r9, 0(r15)
+secondsensor:	
+	movia r9, 0xFFFFEB0F				#enable sensor 1 and motor 1
+	stwio r9, 0(r15)
 
-#readsecondsensor:
-#	ldwio   r12, 0(r15)
-#	srli    r12, r12, 27
-#	andi    r12, r12, 0x0f 	
+readsecondsensor:
+	ldwio   r12, 0(r15)
+	srli    r12, r12, 27
+	andi    r12, r12, 0x0f 	
 
-#thirdsensor:	
-#	movia r9, 0xFFFFAB0F				#enable sensor 2 and motor 1
-#	stwio r9, 0(r15)
+thirdsensor:	
+	movia r9, 0xFFFFAB0F				#enable sensor 2 and motor 1
+	stwio r9, 0(r15)
 	
-#readthirdsensor:
-#	ldwio   r13, 0(r15)
-#	srli    r13, r13, 27
-#	andi    r13, r13, 0x0f 	
+readthirdsensor:
+	ldwio   r13, 0(r15)
+	srli    r13, r13, 27
+	andi    r13, r13, 0x0f 	
 
-	movi 	r14, 0x6
-	blt		r11, r14, forward	
-	bgt	    r11, r14, backward
-#	bgt 	r12, r14, nothing
+	movi    r14, 0x6    #assuming the threshold value is 6, sensor turns on at 9 
+	movi 	r19, r0
+	blt		r11, r14, secondsen	
+	ori     r19, 0b001
+	secondsen:
+	blt 	r12, r14, thirdsen
+	ori     r19, 0b010
+	thirdsen:
+	blt     r13, r14, move
+	ori     r19, 0b100
+
+move:	
+	beq r19, 0b001, forward
+	beq r19, 0b100, backward
+	br exitInterrupt
 	
 	
 forward:	
@@ -148,6 +159,7 @@ forward:
 	call 	timer
 	movia	r9, 0xFFFFFB0F		
 	stwio 	r9, 0(r15)					#Turn off motor keeping drill and material motor on	
+	br 		exitInterrupt
 	
 backward:	
 	movia  	r9, 0xFFFFFB03			  	#enabling the motor 1 in reverse, along with sensor and motor 2 and 3
