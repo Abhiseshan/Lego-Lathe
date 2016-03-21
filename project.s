@@ -134,21 +134,24 @@ readthirdsensor:
 	srli    r13, r13, 27
 	andi    r13, r13, 0x0f 	
 
+	movi    r20, 0b001
+	movi    r21, 0b100
+	
 	movi    r14, 0x6    #assuming the threshold value is 6, sensor turns on at 9 
-	movi 	r19, r0
+	movi 	r19, 0x0
 	blt		r11, r14, secondsen	
-	ori     r19, 0b001
+	ori     r19, r19, 0b001
 	secondsen:
-	blt 	r12, r14, thirdsen
-	ori     r19, 0b010
+	blt 	r12, r14, move
+	ori     r19, r19, 0b010
 	thirdsen:
 	blt     r13, r14, move
-	ori     r19, 0b100
+	ori     r19, r19, 0b100
 
 move:	
-	beq r19, 0b001, forward
-	beq r19, 0b100, backward
-	br exitInterrupt
+	beq r19, r20, forward
+	beq r19, r21, backward
+	#br exitInterrupt
 	
 	
 forward:	
