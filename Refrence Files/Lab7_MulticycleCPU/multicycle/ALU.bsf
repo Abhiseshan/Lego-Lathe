@@ -1,0 +1,77 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2007 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 64 64 192 248)
+	(text "ALU" (rect 8 24 29 36)(font "Arial" ))
+	(text "inst" (rect 96 24 113 36)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "in1[7..0]" (rect 0 32 40 44)(font "Arial" ))
+		(text "in1[7..0]" (rect 24 72 64 84)(font "Arial" ))
+		(line (pt 0 72)(pt 16 72)(line_width 3))
+	)
+	(port
+		(pt 0 152)
+		(input)
+		(text "in2[7..0]" (rect 0 32 40 44)(font "Arial" ))
+		(text "in2[7..0]" (rect 21 147 61 159)(font "Arial" ))
+		(line (pt 0 152)(pt 16 152)(line_width 3))
+	)
+	(port
+		(pt 64 0)
+		(input)
+		(text "ALUop[2..0]" (rect 0 0 59 12)(font "Arial" ))
+		(text "ALUop[2..0]" (rect 72 -8 84 51)(font "Arial" )(vertical))
+		(line (pt 64 0)(pt 64 56)(line_width 3))
+	)
+	(port
+		(pt 128 152)
+		(output)
+		(text "N" (rect -24 32 -16 44)(font "Arial" ))
+		(text "N" (rect 96 144 104 156)(font "Arial" ))
+		(line (pt 128 152)(pt 112 152)(line_width 1))
+	)
+	(port
+		(pt 128 136)
+		(output)
+		(text "Z" (rect -24 32 -17 44)(font "Arial" ))
+		(text "Z" (rect 97 128 104 140)(font "Arial" ))
+		(line (pt 128 136)(pt 112 136)(line_width 1))
+	)
+	(port
+		(pt 128 104)
+		(output)
+		(text "out[7..0]" (rect -24 32 17 44)(font "Arial" ))
+		(text "out[7..0]" (rect 74 99 115 111)(font "Arial" ))
+		(line (pt 128 104)(pt 112 104)(line_width 3))
+	)
+	(drawing
+		(line (pt 16 48)(pt 112 64)(line_width 1))
+		(line (pt 16 176)(pt 112 160)(line_width 1))
+		(line (pt 16 176)(pt 16 120)(line_width 1))
+		(line (pt 16 104)(pt 16 48)(line_width 1))
+		(line (pt 16 104)(pt 48 112)(line_width 1))
+		(line (pt 16 120)(pt 48 112)(line_width 1))
+		(line (pt 112 160)(pt 112 64)(line_width 1))
+	)
+)
