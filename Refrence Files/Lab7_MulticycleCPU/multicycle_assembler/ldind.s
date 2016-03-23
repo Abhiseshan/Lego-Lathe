@@ -6,4 +6,4 @@
  sub r1, r1
  ori 7
  store r1 ,(r0)
- db %000110111
+ db %11010001
