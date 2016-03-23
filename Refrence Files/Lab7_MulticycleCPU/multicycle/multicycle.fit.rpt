@@ -1,5 +1,5 @@
 Fitter report for multicycle
-Tue Mar 22 23:28:50 2016
+Wed Mar 23 17:11:39 2016
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 
 
@@ -65,7 +65,7 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Fitter Summary                                                               ;
 +---------------------------------+--------------------------------------------+
-; Fitter Status                   ; Successful - Tue Mar 22 23:28:50 2016      ;
+; Fitter Status                   ; Successful - Wed Mar 23 17:11:39 2016      ;
 ; Quartus II 64-Bit Version       ; 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
 ; Revision Name                   ; multicycle                                 ;
 ; Top-level Entity Name           ; multicycle                                 ;
@@ -73,7 +73,7 @@ agreement for further details.
 ; Device                          ; 5CSEMA5F31C6                               ;
 ; Timing Models                   ; Final                                      ;
 ; Logic utilization (in ALMs)     ; 143 / 32,070 ( < 1 % )                     ;
-; Total registers                 ; 116                                        ;
+; Total registers                 ; 108                                        ;
 ; Total pins                      ; 58 / 457 ( 13 % )                          ;
 ; Total virtual pins              ; 0                                          ;
 ; Total block memory bits         ; 2,048 / 4,065,280 ( < 1 % )                ;
@@ -215,27 +215,19 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------+--------------------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Fitter Netlist Optimizations                                                                                                                                                                                                            ;
-+----------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+--------------------------------------+------------------+-----------------------+
-; Node                       ; Action     ; Operation                                         ; Reason                     ; Node Port ; Node Port Name ; Destination Node                     ; Destination Port ; Destination Port Name ;
-+----------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+--------------------------------------+------------------+-----------------------+
-; KEY[1]~inputCLKENA0        ; Created    ; Placement                                         ; Fitter Periphery Placement ;           ;                ;                                      ;                  ;                       ;
-; FSM:Control|state.c3_shift ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; FSM:Control|state.c3_shift~DUPLICATE ;                  ;                       ;
-; FSM:Control|state.c5_ori   ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; FSM:Control|state.c5_ori~DUPLICATE   ;                  ;                       ;
-; RF:RF_block|r0[4]          ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; RF:RF_block|r0[4]~DUPLICATE          ;                  ;                       ;
-; RF:RF_block|r2[5]          ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; RF:RF_block|r2[5]~DUPLICATE          ;                  ;                       ;
-; RF:RF_block|r3[0]          ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; RF:RF_block|r3[0]~DUPLICATE          ;                  ;                       ;
-; RF:RF_block|r3[4]          ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; RF:RF_block|r3[4]~DUPLICATE          ;                  ;                       ;
-; RF:RF_block|r3[5]          ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; RF:RF_block|r3[5]~DUPLICATE          ;                  ;                       ;
-; RF:RF_block|r3[6]          ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; RF:RF_block|r3[6]~DUPLICATE          ;                  ;                       ;
-; register_8bit:IR_reg|q[2]  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; register_8bit:IR_reg|q[2]~DUPLICATE  ;                  ;                       ;
-; register_8bit:IR_reg|q[3]  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; register_8bit:IR_reg|q[3]~DUPLICATE  ;                  ;                       ;
-; register_8bit:IR_reg|q[4]  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; register_8bit:IR_reg|q[4]~DUPLICATE  ;                  ;                       ;
-; register_8bit:IR_reg|q[6]  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; register_8bit:IR_reg|q[6]~DUPLICATE  ;                  ;                       ;
-; register_8bit:IR_reg|q[7]  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; register_8bit:IR_reg|q[7]~DUPLICATE  ;                  ;                       ;
-; register_8bit:OpA|q[3]     ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; register_8bit:OpA|q[3]~DUPLICATE     ;                  ;                       ;
-+----------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+--------------------------------------+------------------+-----------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fitter Netlist Optimizations                                                                                                                                                                                                          ;
++---------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+-------------------------------------+------------------+-----------------------+
+; Node                      ; Action     ; Operation                                         ; Reason                     ; Node Port ; Node Port Name ; Destination Node                    ; Destination Port ; Destination Port Name ;
++---------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+-------------------------------------+------------------+-----------------------+
+; KEY[1]~inputCLKENA0       ; Created    ; Placement                                         ; Fitter Periphery Placement ;           ;                ;                                     ;                  ;                       ;
+; FSM:Control|state.c3_ori  ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; FSM:Control|state.c3_ori~DUPLICATE  ;                  ;                       ;
+; FSM:Control|state.c4_load ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; FSM:Control|state.c4_load~DUPLICATE ;                  ;                       ;
+; RF:RF_block|r2[1]         ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; RF:RF_block|r2[1]~DUPLICATE         ;                  ;                       ;
+; RF:RF_block|r3[5]         ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; RF:RF_block|r3[5]~DUPLICATE         ;                  ;                       ;
+; register_8bit:IR_reg|q[5] ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; register_8bit:IR_reg|q[5]~DUPLICATE ;                  ;                       ;
+; register_8bit:IR_reg|q[6] ; Duplicated ; Router Logic Cell Insertion and Logic Duplication ; Routability optimization   ;           ;                ; register_8bit:IR_reg|q[6]~DUPLICATE ;                  ;                       ;
++---------------------------+------------+---------------------------------------------------+----------------------------+-----------+----------------+-------------------------------------+------------------+-----------------------+
 
 
 +--------------------------------------------------------------------------------------------+
@@ -268,8 +260,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Type                ; Total [A + B]      ; From Design Partitions [A] ; From Rapid Recompile [B] ;
 +---------------------+--------------------+----------------------------+--------------------------+
 ; Placement (by node) ;                    ;                            ;                          ;
-;     -- Requested    ; 0.00 % ( 0 / 460 ) ; 0.00 % ( 0 / 460 )         ; 0.00 % ( 0 / 460 )       ;
-;     -- Achieved     ; 0.00 % ( 0 / 460 ) ; 0.00 % ( 0 / 460 )         ; 0.00 % ( 0 / 460 )       ;
+;     -- Requested    ; 0.00 % ( 0 / 459 ) ; 0.00 % ( 0 / 459 )         ; 0.00 % ( 0 / 459 )       ;
+;     -- Achieved     ; 0.00 % ( 0 / 459 ) ; 0.00 % ( 0 / 459 )         ; 0.00 % ( 0 / 459 )       ;
 ;                     ;                    ;                            ;                          ;
 ; Routing (by net)    ;                    ;                            ;                          ;
 ;     -- Requested    ; 0.00 % ( 0 / 0 )   ; 0.00 % ( 0 / 0 )           ; 0.00 % ( 0 / 0 )         ;
@@ -292,7 +284,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 ; Partition Name                 ; Preservation Achieved ; Preservation Level Used ; Netlist Type Used ; Preservation Method ; Notes ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
-; Top                            ; 0.00 % ( 0 / 460 )    ; N/A                     ; Source File       ; N/A                 ;       ;
+; Top                            ; 0.00 % ( 0 / 459 )    ; N/A                     ; Source File       ; N/A                 ;       ;
 ; hard_block:auto_generated_inst ; 0.00 % ( 0 / 0 )      ; N/A                     ; Source File       ; N/A                 ;       ;
 +--------------------------------+-----------------------+-------------------------+-------------------+---------------------+-------+
 
@@ -300,7 +292,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in C:/Users/abhin/Desktop/multicycle/multicycle/multicycle.pin.
+The pin-out file can be found in X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/multicycle.pin.
 
 
 +------------------------------------------------------------------------------------------+
@@ -311,9 +303,9 @@ The pin-out file can be found in C:/Users/abhin/Desktop/multicycle/multicycle/mu
 ; Logic utilization (ALMs needed / total ALMs on device)      ; 143 / 32,070       ; < 1 % ;
 ; ALMs needed [=A-B+C]                                        ; 143                ;       ;
 ;     [A] ALMs used in final placement [=a+b+c+d]             ; 153 / 32,070       ; < 1 % ;
-;         [a] ALMs used for LUT logic and registers           ; 30                 ;       ;
-;         [b] ALMs used for LUT logic                         ; 102                ;       ;
-;         [c] ALMs used for registers                         ; 21                 ;       ;
+;         [a] ALMs used for LUT logic and registers           ; 32                 ;       ;
+;         [b] ALMs used for LUT logic                         ; 101                ;       ;
+;         [c] ALMs used for registers                         ; 20                 ;       ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                  ;       ;
 ;     [B] Estimate of ALMs recoverable by dense packing       ; 10 / 32,070        ; < 1 % ;
 ;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 32,070         ; 0 %   ;
@@ -324,24 +316,24 @@ The pin-out file can be found in C:/Users/abhin/Desktop/multicycle/multicycle/mu
 ;                                                             ;                    ;       ;
 ; Difficulty packing design                                   ; Low                ;       ;
 ;                                                             ;                    ;       ;
-; Total LABs:  partially or completely used                   ; 21 / 3,207         ; < 1 % ;
-;     -- Logic LABs                                           ; 21                 ;       ;
+; Total LABs:  partially or completely used                   ; 19 / 3,207         ; < 1 % ;
+;     -- Logic LABs                                           ; 19                 ;       ;
 ;     -- Memory LABs (up to half of total LABs)               ; 0                  ;       ;
 ;                                                             ;                    ;       ;
-; Combinational ALUT usage for logic                          ; 233                ;       ;
+; Combinational ALUT usage for logic                          ; 232                ;       ;
 ;     -- 7 input functions                                    ; 0                  ;       ;
-;     -- 6 input functions                                    ; 61                 ;       ;
+;     -- 6 input functions                                    ; 60                 ;       ;
 ;     -- 5 input functions                                    ; 62                 ;       ;
-;     -- 4 input functions                                    ; 57                 ;       ;
-;     -- <=3 input functions                                  ; 53                 ;       ;
-; Combinational ALUT usage for route-throughs                 ; 4                  ;       ;
-; Dedicated logic registers                                   ; 116                ;       ;
+;     -- 4 input functions                                    ; 66                 ;       ;
+;     -- <=3 input functions                                  ; 44                 ;       ;
+; Combinational ALUT usage for route-throughs                 ; 2                  ;       ;
+; Dedicated logic registers                                   ; 108                ;       ;
 ;     -- By type:                                             ;                    ;       ;
 ;         -- Primary logic registers                          ; 102 / 64,140       ; < 1 % ;
-;         -- Secondary logic registers                        ; 14 / 64,140        ; < 1 % ;
+;         -- Secondary logic registers                        ; 6 / 64,140         ; < 1 % ;
 ;     -- By function:                                         ;                    ;       ;
 ;         -- Design implementation registers                  ; 102                ;       ;
-;         -- Routing optimization registers                   ; 14                 ;       ;
+;         -- Routing optimization registers                   ; 6                  ;       ;
 ;                                                             ;                    ;       ;
 ; Virtual pins                                                ; 0                  ;       ;
 ; I/O pins                                                    ; 58 / 457           ; 13 %  ;
@@ -397,11 +389,11 @@ The pin-out file can be found in C:/Users/abhin/Desktop/multicycle/multicycle/mu
 ; Impedance control blocks                                    ; 0 / 4              ; 0 %   ;
 ; Hard Memory Controllers                                     ; 0 / 2              ; 0 %   ;
 ; Average interconnect usage (total/H/V)                      ; 0.2% / 0.2% / 0.1% ;       ;
-; Peak interconnect usage (total/H/V)                         ; 5.0% / 5.2% / 4.2% ;       ;
-; Maximum fan-out                                             ; 117                ;       ;
-; Highest non-global fan-out                                  ; 116                ;       ;
-; Total fan-out                                               ; 1632               ;       ;
-; Average fan-out                                             ; 3.46               ;       ;
+; Peak interconnect usage (total/H/V)                         ; 4.3% / 4.7% / 3.1% ;       ;
+; Maximum fan-out                                             ; 109                ;       ;
+; Highest non-global fan-out                                  ; 108                ;       ;
+; Total fan-out                                               ; 1601               ;       ;
+; Average fan-out                                             ; 3.48               ;       ;
 +-------------------------------------------------------------+--------------------+-------+
 
 
@@ -413,9 +405,9 @@ The pin-out file can be found in C:/Users/abhin/Desktop/multicycle/multicycle/mu
 ; Logic utilization (ALMs needed / total ALMs on device)      ; 143 / 32070 ( < 1 % ) ; 0 / 32070 ( 0 % )              ;
 ; ALMs needed [=A-B+C]                                        ; 143                   ; 0                              ;
 ;     [A] ALMs used in final placement [=a+b+c+d]             ; 153 / 32070 ( < 1 % ) ; 0 / 32070 ( 0 % )              ;
-;         [a] ALMs used for LUT logic and registers           ; 30                    ; 0                              ;
-;         [b] ALMs used for LUT logic                         ; 102                   ; 0                              ;
-;         [c] ALMs used for registers                         ; 21                    ; 0                              ;
+;         [a] ALMs used for LUT logic and registers           ; 32                    ; 0                              ;
+;         [b] ALMs used for LUT logic                         ; 101                   ; 0                              ;
+;         [c] ALMs used for registers                         ; 20                    ; 0                              ;
 ;         [d] ALMs used for memory (up to half of total ALMs) ; 0                     ; 0                              ;
 ;     [B] Estimate of ALMs recoverable by dense packing       ; 10 / 32070 ( < 1 % )  ; 0 / 32070 ( 0 % )              ;
 ;     [C] Estimate of ALMs unavailable [=a+b+c+d]             ; 0 / 32070 ( 0 % )     ; 0 / 32070 ( 0 % )              ;
@@ -426,17 +418,17 @@ The pin-out file can be found in C:/Users/abhin/Desktop/multicycle/multicycle/mu
 ;                                                             ;                       ;                                ;
 ; Difficulty packing design                                   ; Low                   ; Low                            ;
 ;                                                             ;                       ;                                ;
-; Total LABs:  partially or completely used                   ; 21 / 3207 ( < 1 % )   ; 0 / 3207 ( 0 % )               ;
-;     -- Logic LABs                                           ; 21                    ; 0                              ;
+; Total LABs:  partially or completely used                   ; 19 / 3207 ( < 1 % )   ; 0 / 3207 ( 0 % )               ;
+;     -- Logic LABs                                           ; 19                    ; 0                              ;
 ;     -- Memory LABs (up to half of total LABs)               ; 0                     ; 0                              ;
 ;                                                             ;                       ;                                ;
-; Combinational ALUT usage for logic                          ; 233                   ; 0                              ;
+; Combinational ALUT usage for logic                          ; 232                   ; 0                              ;
 ;     -- 7 input functions                                    ; 0                     ; 0                              ;
-;     -- 6 input functions                                    ; 61                    ; 0                              ;
+;     -- 6 input functions                                    ; 60                    ; 0                              ;
 ;     -- 5 input functions                                    ; 62                    ; 0                              ;
-;     -- 4 input functions                                    ; 57                    ; 0                              ;
-;     -- <=3 input functions                                  ; 53                    ; 0                              ;
-; Combinational ALUT usage for route-throughs                 ; 4                     ; 0                              ;
+;     -- 4 input functions                                    ; 66                    ; 0                              ;
+;     -- <=3 input functions                                  ; 44                    ; 0                              ;
+; Combinational ALUT usage for route-throughs                 ; 2                     ; 0                              ;
 ; Memory ALUT usage                                           ; 0                     ; 0                              ;
 ;     -- 64-address deep                                      ; 0                     ; 0                              ;
 ;     -- 32-address deep                                      ; 0                     ; 0                              ;
@@ -444,10 +436,10 @@ The pin-out file can be found in C:/Users/abhin/Desktop/multicycle/multicycle/mu
 ; Dedicated logic registers                                   ; 0                     ; 0                              ;
 ;     -- By type:                                             ;                       ;                                ;
 ;         -- Primary logic registers                          ; 102 / 64140 ( < 1 % ) ; 0 / 64140 ( 0 % )              ;
-;         -- Secondary logic registers                        ; 14 / 64140 ( < 1 % )  ; 0 / 64140 ( 0 % )              ;
+;         -- Secondary logic registers                        ; 6 / 64140 ( < 1 % )   ; 0 / 64140 ( 0 % )              ;
 ;     -- By function:                                         ;                       ;                                ;
 ;         -- Design implementation registers                  ; 102                   ; 0                              ;
-;         -- Routing optimization registers                   ; 14                    ; 0                              ;
+;         -- Routing optimization registers                   ; 6                     ; 0                              ;
 ;                                                             ;                       ;                                ;
 ;                                                             ;                       ;                                ;
 ; Virtual pins                                                ; 0                     ; 0                              ;
@@ -465,8 +457,8 @@ The pin-out file can be found in C:/Users/abhin/Desktop/multicycle/multicycle/mu
 ;     -- Registered Output Connections                        ; 0                     ; 0                              ;
 ;                                                             ;                       ;                                ;
 ; Internal Connections                                        ;                       ;                                ;
-;     -- Total Connections                                    ; 1632                  ; 0                              ;
-;     -- Registered Connections                               ; 469                   ; 0                              ;
+;     -- Total Connections                                    ; 1601                  ; 0                              ;
+;     -- Registered Connections                               ; 478                   ; 0                              ;
 ;                                                             ;                       ;                                ;
 ; External Connections                                        ;                       ;                                ;
 ;     -- Top                                                  ; 0                     ; 0                              ;
@@ -498,8 +490,8 @@ The pin-out file can be found in C:/Users/abhin/Desktop/multicycle/multicycle/mu
 +--------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+-----------+
 ; Name   ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Z coordinate ; Combinational Fan-Out ; Registered Fan-Out ; Global ; Input Register ; PCI I/O Enabled ; Bus Hold ; Weak Pull Up ; I/O Standard ; Termination ; Termination Control Block ; Location assigned by ; Slew Rate ;
 +--------+-------+----------+--------------+--------------+--------------+-----------------------+--------------------+--------+----------------+-----------------+----------+--------------+--------------+-------------+---------------------------+----------------------+-----------+
-; KEY[0] ; AA14  ; 3B       ; 36           ; 0            ; 0            ; 116                   ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
-; KEY[1] ; AA15  ; 3B       ; 36           ; 0            ; 17           ; 117                   ; 0                  ; yes    ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
+; KEY[0] ; AA14  ; 3B       ; 36           ; 0            ; 0            ; 108                   ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
+; KEY[1] ; AA15  ; 3B       ; 36           ; 0            ; 17           ; 109                   ; 0                  ; yes    ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
 ; SW[0]  ; AB12  ; 3A       ; 12           ; 0            ; 17           ; 24                    ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
 ; SW[1]  ; AC12  ; 3A       ; 16           ; 0            ; 0            ; 24                    ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
 ; SW[2]  ; AF9   ; 3A       ; 8            ; 0            ; 34           ; 10                    ; 0                  ; no     ; no             ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; --                        ; User                 ; no        ;
@@ -1499,31 +1491,31 @@ Note: Pin directions (input, output or bidir) are based on device operating in u
 +----------------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                   ; ALMs needed [=A-B+C] ; [A] ALMs used in final placement ; [B] Estimate of ALMs recoverable by dense packing ; [C] Estimate of ALMs unavailable ; ALMs used for memory ; Combinational ALUTs ; Dedicated Logic Registers ; I/O Registers ; Block Memory Bits ; M10Ks ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                       ; Library Name ;
 +----------------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------+--------------+
-; |multicycle                                  ; 143.0 (20.7)         ; 153.0 (24.7)                     ; 10.0 (4.0)                                        ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 233 (43)            ; 116 (2)                   ; 0 (0)         ; 2048              ; 1     ; 0          ; 58   ; 0            ; |multicycle                                                                                               ; work         ;
-;    |ALU:ALU|                                 ; 34.7 (34.7)          ; 35.6 (35.6)                      ; 0.9 (0.9)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 58 (58)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|ALU:ALU                                                                                       ; work         ;
-;    |FSM:Control|                             ; 15.5 (15.5)          ; 15.8 (15.8)                      ; 0.3 (0.3)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 29 (29)             ; 22 (22)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|FSM:Control                                                                                   ; work         ;
-;    |HEXs:HEX_display|                        ; 20.7 (0.0)           ; 21.0 (0.0)                       ; 0.3 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 42 (0)              ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|HEXs:HEX_display                                                                              ; work         ;
-;       |HEX:hex0|                             ; 3.3 (3.3)            ; 3.5 (3.5)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|HEXs:HEX_display|HEX:hex0                                                                     ; work         ;
-;       |HEX:hex1|                             ; 3.3 (3.3)            ; 3.5 (3.5)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|HEXs:HEX_display|HEX:hex1                                                                     ; work         ;
-;       |HEX:hex2|                             ; 3.5 (3.5)            ; 3.5 (3.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|HEXs:HEX_display|HEX:hex2                                                                     ; work         ;
+; |multicycle                                  ; 142.5 (20.7)         ; 152.0 (24.6)                     ; 9.5 (3.9)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 232 (43)            ; 108 (2)                   ; 0 (0)         ; 2048              ; 1     ; 0          ; 58   ; 0            ; |multicycle                                                                                               ; work         ;
+;    |ALU:ALU|                                 ; 35.0 (35.0)          ; 35.7 (35.7)                      ; 0.7 (0.7)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 58 (58)             ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|ALU:ALU                                                                                       ; work         ;
+;    |FSM:Control|                             ; 14.8 (14.8)          ; 15.2 (15.2)                      ; 0.3 (0.3)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 28 (28)             ; 22 (22)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|FSM:Control                                                                                   ; work         ;
+;    |HEXs:HEX_display|                        ; 20.8 (0.0)           ; 20.8 (0.0)                       ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 42 (0)              ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|HEXs:HEX_display                                                                              ; work         ;
+;       |HEX:hex0|                             ; 3.5 (3.5)            ; 3.5 (3.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|HEXs:HEX_display|HEX:hex0                                                                     ; work         ;
+;       |HEX:hex1|                             ; 3.5 (3.5)            ; 3.5 (3.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|HEXs:HEX_display|HEX:hex1                                                                     ; work         ;
+;       |HEX:hex2|                             ; 3.3 (3.3)            ; 3.3 (3.3)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|HEXs:HEX_display|HEX:hex2                                                                     ; work         ;
 ;       |HEX:hex3|                             ; 3.5 (3.5)            ; 3.5 (3.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|HEXs:HEX_display|HEX:hex3                                                                     ; work         ;
 ;       |HEX:hex4|                             ; 3.5 (3.5)            ; 3.5 (3.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|HEXs:HEX_display|HEX:hex4                                                                     ; work         ;
 ;       |HEX:hex5|                             ; 3.5 (3.5)            ; 3.5 (3.5)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|HEXs:HEX_display|HEX:hex5                                                                     ; work         ;
-;    |RF:RF_block|                             ; 21.7 (21.7)          ; 24.6 (24.6)                      ; 2.9 (2.9)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 20 (20)             ; 38 (38)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|RF:RF_block                                                                                   ; work         ;
+;    |RF:RF_block|                             ; 20.8 (20.8)          ; 23.9 (23.9)                      ; 3.0 (3.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 20 (20)             ; 34 (34)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|RF:RF_block                                                                                   ; work         ;
 ;    |memory:DataMem|                          ; 2.0 (0.0)            ; 2.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 8 (0)               ; 0 (0)                     ; 0 (0)         ; 2048              ; 1     ; 0          ; 0    ; 0            ; |multicycle|memory:DataMem                                                                                ; work         ;
 ;       |DataMemory:inst|                      ; 0.0 (0.0)            ; 0.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 0 (0)                     ; 0 (0)         ; 2048              ; 1     ; 0          ; 0    ; 0            ; |multicycle|memory:DataMem|DataMemory:inst                                                                ; work         ;
 ;          |altsyncram:altsyncram_component|   ; 0.0 (0.0)            ; 0.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 0 (0)                     ; 0 (0)         ; 2048              ; 1     ; 0          ; 0    ; 0            ; |multicycle|memory:DataMem|DataMemory:inst|altsyncram:altsyncram_component                                ; work         ;
 ;             |altsyncram_a1j1:auto_generated| ; 0.0 (0.0)            ; 0.0 (0.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 0 (0)                     ; 0 (0)         ; 2048              ; 1     ; 0          ; 0    ; 0            ; |multicycle|memory:DataMem|DataMemory:inst|altsyncram:altsyncram_component|altsyncram_a1j1:auto_generated ; work         ;
 ;       |mux2to1_8bit:inst3|                   ; 2.0 (2.0)            ; 2.0 (2.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 8 (8)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|memory:DataMem|mux2to1_8bit:inst3                                                             ; work         ;
 ;    |mux2to1_2bit:OpASel_mux|                 ; 1.0 (1.0)            ; 1.0 (1.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 2 (2)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|mux2to1_2bit:OpASel_mux                                                                       ; work         ;
-;    |mux2to1_8bit:ALU1_mux|                   ; 4.7 (4.7)            ; 5.0 (5.0)                        ; 0.3 (0.3)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 8 (8)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|mux2to1_8bit:ALU1_mux                                                                         ; work         ;
+;    |mux2to1_8bit:ALU1_mux|                   ; 4.7 (4.7)            ; 4.7 (4.7)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 8 (8)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|mux2to1_8bit:ALU1_mux                                                                         ; work         ;
 ;    |mux2to1_8bit:MemDirSel_mux|              ; 2.0 (2.0)            ; 2.0 (2.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 8 (8)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|mux2to1_8bit:MemDirSel_mux                                                                    ; work         ;
-;    |mux2to1_8bit:RegMux|                     ; 1.9 (1.9)            ; 1.9 (1.9)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 8 (8)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|mux2to1_8bit:RegMux                                                                           ; work         ;
-;    |mux5to1_8bit:ALU2_mux|                   ; 3.7 (3.7)            ; 4.0 (4.0)                        ; 0.3 (0.3)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|mux5to1_8bit:ALU2_mux                                                                         ; work         ;
+;    |mux2to1_8bit:RegMux|                     ; 2.2 (2.2)            ; 3.3 (3.3)                        ; 1.1 (1.1)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 8 (8)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|mux2to1_8bit:RegMux                                                                           ; work         ;
+;    |mux5to1_8bit:ALU2_mux|                   ; 4.2 (4.2)            ; 4.3 (4.3)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 7 (7)               ; 0 (0)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|mux5to1_8bit:ALU2_mux                                                                         ; work         ;
 ;    |register_8bit:ALUOut_reg|                ; 2.5 (2.5)            ; 2.7 (2.7)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 8 (8)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|register_8bit:ALUOut_reg                                                                      ; work         ;
-;    |register_8bit:IR_reg|                    ; 2.5 (2.5)            ; 3.3 (3.3)                        ; 0.8 (0.8)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 13 (13)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|register_8bit:IR_reg                                                                          ; work         ;
+;    |register_8bit:IR_reg|                    ; 2.5 (2.5)            ; 2.7 (2.7)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 10 (10)                   ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|register_8bit:IR_reg                                                                          ; work         ;
 ;    |register_8bit:MDR_reg|                   ; 2.0 (2.0)            ; 2.0 (2.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 8 (8)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|register_8bit:MDR_reg                                                                         ; work         ;
-;    |register_8bit:OpA|                       ; 2.7 (2.7)            ; 2.8 (2.8)                        ; 0.2 (0.2)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 9 (9)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|register_8bit:OpA                                                                             ; work         ;
+;    |register_8bit:OpA|                       ; 2.7 (2.7)            ; 2.7 (2.7)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 8 (8)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|register_8bit:OpA                                                                             ; work         ;
 ;    |register_8bit:OpB|                       ; 2.7 (2.7)            ; 2.7 (2.7)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 8 (8)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|register_8bit:OpB                                                                             ; work         ;
 ;    |register_8bit:PC|                        ; 2.0 (2.0)            ; 2.0 (2.0)                        ; 0.0 (0.0)                                         ; 0.0 (0.0)                        ; 0.0 (0.0)            ; 0 (0)               ; 8 (8)                     ; 0 (0)         ; 0                 ; 0     ; 0          ; 0    ; 0            ; |multicycle|register_8bit:PC                                                                              ; work         ;
 +----------------------------------------------+----------------------+----------------------------------+---------------------------------------------------+----------------------------------+----------------------+---------------------+---------------------------+---------------+-------------------+-------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------+--------------+
@@ -1588,7 +1580,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; LEDR[8] ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; LEDR[9] ; Output   ; -- ; --   ; --   ; -- ; (0)  ; (31)  ; --     ; --                     ; --                       ;
 ; SW[0]   ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
-; SW[1]   ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
+; SW[1]   ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; SW[2]   ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; SW[3]   ; Input    ; -- ; --   ; (0)  ; -- ; --   ; --    ; --     ; --                     ; --                       ;
 ; KEY[1]  ; Input    ; -- ; (0)  ; --   ; -- ; --   ; --    ; --     ; --                     ; --                       ;
@@ -1596,203 +1588,195 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------+----------+----+------+------+----+------+-------+--------+------------------------+--------------------------+
 
 
-+---------------------------------------------------------------------------+
-; Pad To Core Delay Chain Fanout                                            ;
-+---------------------------------------------+-------------------+---------+
-; Source Pin / Fanout                         ; Pad To Core Index ; Setting ;
-+---------------------------------------------+-------------------+---------+
-; SW[0]                                       ;                   ;         ;
-;      - Mux32~0                              ; 1                 ; 0       ;
-;      - Mux31~0                              ; 1                 ; 0       ;
-;      - Mux30~0                              ; 1                 ; 0       ;
-;      - Mux29~0                              ; 1                 ; 0       ;
-;      - Mux28~0                              ; 1                 ; 0       ;
-;      - Mux27~0                              ; 1                 ; 0       ;
-;      - Mux26~0                              ; 1                 ; 0       ;
-;      - Mux25~0                              ; 1                 ; 0       ;
-;      - Mux24~0                              ; 1                 ; 0       ;
-;      - Mux23~0                              ; 1                 ; 0       ;
-;      - Mux22~0                              ; 1                 ; 0       ;
-;      - Mux21~0                              ; 1                 ; 0       ;
-;      - Mux20~0                              ; 1                 ; 0       ;
-;      - Mux19~0                              ; 1                 ; 0       ;
-;      - Mux18~0                              ; 1                 ; 0       ;
-;      - Mux17~0                              ; 1                 ; 0       ;
-;      - Mux16~0                              ; 1                 ; 0       ;
-;      - Mux15~0                              ; 1                 ; 0       ;
-;      - Mux14~0                              ; 1                 ; 0       ;
-;      - Mux13~0                              ; 1                 ; 0       ;
-;      - Mux12~0                              ; 1                 ; 0       ;
-;      - Mux11~0                              ; 1                 ; 0       ;
-;      - Mux10~0                              ; 1                 ; 0       ;
-;      - Mux9~0                               ; 1                 ; 0       ;
-; SW[1]                                       ;                   ;         ;
-;      - Mux32~0                              ; 0                 ; 0       ;
-;      - Mux31~0                              ; 0                 ; 0       ;
-;      - Mux30~0                              ; 0                 ; 0       ;
-;      - Mux29~0                              ; 0                 ; 0       ;
-;      - Mux28~0                              ; 0                 ; 0       ;
-;      - Mux27~0                              ; 0                 ; 0       ;
-;      - Mux26~0                              ; 0                 ; 0       ;
-;      - Mux25~0                              ; 0                 ; 0       ;
-;      - Mux24~0                              ; 0                 ; 0       ;
-;      - Mux23~0                              ; 0                 ; 0       ;
-;      - Mux22~0                              ; 0                 ; 0       ;
-;      - Mux21~0                              ; 0                 ; 0       ;
-;      - Mux20~0                              ; 0                 ; 0       ;
-;      - Mux19~0                              ; 0                 ; 0       ;
-;      - Mux18~0                              ; 0                 ; 0       ;
-;      - Mux17~0                              ; 0                 ; 0       ;
-;      - Mux16~0                              ; 0                 ; 0       ;
-;      - Mux15~0                              ; 0                 ; 0       ;
-;      - Mux14~0                              ; 0                 ; 0       ;
-;      - Mux13~0                              ; 0                 ; 0       ;
-;      - Mux12~0                              ; 0                 ; 0       ;
-;      - Mux11~0                              ; 0                 ; 0       ;
-;      - Mux10~0                              ; 0                 ; 0       ;
-;      - Mux9~0                               ; 0                 ; 0       ;
-; SW[2]                                       ;                   ;         ;
-;      - Mux8~0                               ; 1                 ; 0       ;
-;      - Mux7~0                               ; 1                 ; 0       ;
-;      - Mux6~0                               ; 1                 ; 0       ;
-;      - Mux5~0                               ; 1                 ; 0       ;
-;      - rtl~62                               ; 1                 ; 0       ;
-;      - Mux3~0                               ; 1                 ; 0       ;
-;      - LEDR~0                               ; 1                 ; 0       ;
-;      - Mux2~0                               ; 1                 ; 0       ;
-;      - Mux1~0                               ; 1                 ; 0       ;
-;      - rtl~63                               ; 1                 ; 0       ;
-; SW[3]                                       ;                   ;         ;
-;      - Mux8~0                               ; 1                 ; 0       ;
-;      - Mux7~0                               ; 1                 ; 0       ;
-;      - Mux6~0                               ; 1                 ; 0       ;
-;      - Mux5~0                               ; 1                 ; 0       ;
-;      - rtl~62                               ; 1                 ; 0       ;
-;      - Mux3~0                               ; 1                 ; 0       ;
-;      - LEDR~0                               ; 1                 ; 0       ;
-;      - Mux2~0                               ; 1                 ; 0       ;
-;      - Mux1~0                               ; 1                 ; 0       ;
-;      - rtl~63                               ; 1                 ; 0       ;
-; KEY[1]                                      ;                   ;         ;
-;      - KEY[1]~inputCLKENA0                  ; 0                 ; 0       ;
-; KEY[0]                                      ;                   ;         ;
-;      - Z                                    ; 0                 ; 0       ;
-;      - N                                    ; 0                 ; 0       ;
-;      - RF:RF_block|r3[0]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r3[1]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r3[2]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r3[3]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r3[4]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r3[5]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r3[6]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r3[7]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r2[0]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r2[1]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r2[2]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r2[3]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r2[4]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r2[5]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r2[6]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r2[7]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r1[0]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r1[1]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r1[2]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r1[3]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r1[4]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r1[5]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r1[6]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r1[7]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r0[0]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r0[1]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r0[2]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r0[3]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r0[4]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r0[5]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r0[6]                    ; 0                 ; 0       ;
-;      - RF:RF_block|r0[7]                    ; 0                 ; 0       ;
-;      - register_8bit:IR_reg|q[0]            ; 0                 ; 0       ;
-;      - register_8bit:IR_reg|q[1]            ; 0                 ; 0       ;
-;      - register_8bit:IR_reg|q[2]            ; 0                 ; 0       ;
-;      - register_8bit:IR_reg|q[3]            ; 0                 ; 0       ;
-;      - register_8bit:IR_reg|q[4]            ; 0                 ; 0       ;
-;      - register_8bit:IR_reg|q[5]            ; 0                 ; 0       ;
-;      - register_8bit:IR_reg|q[6]            ; 0                 ; 0       ;
-;      - register_8bit:IR_reg|q[7]            ; 0                 ; 0       ;
-;      - register_8bit:PC|q[0]                ; 0                 ; 0       ;
-;      - register_8bit:PC|q[1]                ; 0                 ; 0       ;
-;      - register_8bit:PC|q[2]                ; 0                 ; 0       ;
-;      - register_8bit:PC|q[3]                ; 0                 ; 0       ;
-;      - register_8bit:PC|q[4]                ; 0                 ; 0       ;
-;      - register_8bit:PC|q[5]                ; 0                 ; 0       ;
-;      - register_8bit:PC|q[6]                ; 0                 ; 0       ;
-;      - register_8bit:PC|q[7]                ; 0                 ; 0       ;
-;      - register_8bit:OpA|q[0]               ; 0                 ; 0       ;
-;      - register_8bit:OpA|q[1]               ; 0                 ; 0       ;
-;      - register_8bit:OpA|q[2]               ; 0                 ; 0       ;
-;      - register_8bit:OpA|q[3]               ; 0                 ; 0       ;
-;      - register_8bit:OpA|q[4]               ; 0                 ; 0       ;
-;      - register_8bit:OpA|q[5]               ; 0                 ; 0       ;
-;      - register_8bit:OpA|q[6]               ; 0                 ; 0       ;
-;      - register_8bit:OpA|q[7]               ; 0                 ; 0       ;
-;      - register_8bit:OpB|q[0]               ; 0                 ; 0       ;
-;      - register_8bit:OpB|q[1]               ; 0                 ; 0       ;
-;      - register_8bit:OpB|q[2]               ; 0                 ; 0       ;
-;      - register_8bit:OpB|q[3]               ; 0                 ; 0       ;
-;      - register_8bit:OpB|q[4]               ; 0                 ; 0       ;
-;      - register_8bit:OpB|q[5]               ; 0                 ; 0       ;
-;      - register_8bit:OpB|q[6]               ; 0                 ; 0       ;
-;      - register_8bit:OpB|q[7]               ; 0                 ; 0       ;
-;      - FSM:Control|state.c1                 ; 0                 ; 0       ;
-;      - FSM:Control|state.c2                 ; 0                 ; 0       ;
-;      - FSM:Control|state.c3_asn             ; 0                 ; 0       ;
-;      - FSM:Control|state.c4_asnsh           ; 0                 ; 0       ;
-;      - FSM:Control|state.c3_shift           ; 0                 ; 0       ;
-;      - FSM:Control|state.c3_ori             ; 0                 ; 0       ;
-;      - FSM:Control|state.c4_ori             ; 0                 ; 0       ;
-;      - FSM:Control|state.c5_ori             ; 0                 ; 0       ;
-;      - FSM:Control|state.c3_load            ; 0                 ; 0       ;
-;      - FSM:Control|state.c4_load            ; 0                 ; 0       ;
-;      - FSM:Control|state.c3_store           ; 0                 ; 0       ;
-;      - FSM:Control|state.c3_bpz             ; 0                 ; 0       ;
-;      - FSM:Control|state.c3_bz              ; 0                 ; 0       ;
-;      - FSM:Control|state.c3_bnz             ; 0                 ; 0       ;
-;      - FSM:Control|state.c3_jump            ; 0                 ; 0       ;
-;      - FSM:Control|state.c3_jal             ; 0                 ; 0       ;
-;      - FSM:Control|state.c4_jal             ; 0                 ; 0       ;
-;      - FSM:Control|state.c3_ldind           ; 0                 ; 0       ;
-;      - FSM:Control|state.c4_ldind           ; 0                 ; 0       ;
-;      - FSM:Control|state.c5_ldind           ; 0                 ; 0       ;
-;      - register_8bit:MDR_reg|q[0]           ; 0                 ; 0       ;
-;      - register_8bit:ALUOut_reg|q[0]        ; 0                 ; 0       ;
-;      - register_8bit:MDR_reg|q[1]           ; 0                 ; 0       ;
-;      - register_8bit:ALUOut_reg|q[1]        ; 0                 ; 0       ;
-;      - register_8bit:MDR_reg|q[2]           ; 0                 ; 0       ;
-;      - register_8bit:ALUOut_reg|q[2]        ; 0                 ; 0       ;
-;      - register_8bit:MDR_reg|q[3]           ; 0                 ; 0       ;
-;      - register_8bit:ALUOut_reg|q[3]        ; 0                 ; 0       ;
-;      - register_8bit:MDR_reg|q[4]           ; 0                 ; 0       ;
-;      - register_8bit:ALUOut_reg|q[4]        ; 0                 ; 0       ;
-;      - register_8bit:MDR_reg|q[5]           ; 0                 ; 0       ;
-;      - register_8bit:ALUOut_reg|q[5]        ; 0                 ; 0       ;
-;      - register_8bit:MDR_reg|q[6]           ; 0                 ; 0       ;
-;      - register_8bit:ALUOut_reg|q[6]        ; 0                 ; 0       ;
-;      - register_8bit:MDR_reg|q[7]           ; 0                 ; 0       ;
-;      - register_8bit:ALUOut_reg|q[7]        ; 0                 ; 0       ;
-;      - FSM:Control|state.c3_shift~DUPLICATE ; 0                 ; 0       ;
-;      - register_8bit:IR_reg|q[3]~DUPLICATE  ; 0                 ; 0       ;
-;      - register_8bit:IR_reg|q[2]~DUPLICATE  ; 0                 ; 0       ;
-;      - register_8bit:OpA|q[3]~DUPLICATE     ; 0                 ; 0       ;
-;      - register_8bit:IR_reg|q[4]~DUPLICATE  ; 0                 ; 0       ;
-;      - register_8bit:IR_reg|q[6]~DUPLICATE  ; 0                 ; 0       ;
-;      - RF:RF_block|r3[0]~DUPLICATE          ; 0                 ; 0       ;
-;      - register_8bit:IR_reg|q[7]~DUPLICATE  ; 0                 ; 0       ;
-;      - RF:RF_block|r3[4]~DUPLICATE          ; 0                 ; 0       ;
-;      - RF:RF_block|r3[5]~DUPLICATE          ; 0                 ; 0       ;
-;      - RF:RF_block|r3[6]~DUPLICATE          ; 0                 ; 0       ;
-;      - RF:RF_block|r0[4]~DUPLICATE          ; 0                 ; 0       ;
-;      - RF:RF_block|r2[5]~DUPLICATE          ; 0                 ; 0       ;
-;      - FSM:Control|state.c5_ori~DUPLICATE   ; 0                 ; 0       ;
-+---------------------------------------------+-------------------+---------+
++--------------------------------------------------------------------------+
+; Pad To Core Delay Chain Fanout                                           ;
++--------------------------------------------+-------------------+---------+
+; Source Pin / Fanout                        ; Pad To Core Index ; Setting ;
++--------------------------------------------+-------------------+---------+
+; SW[0]                                      ;                   ;         ;
+;      - Mux32~0                             ; 1                 ; 0       ;
+;      - Mux31~0                             ; 1                 ; 0       ;
+;      - Mux30~0                             ; 1                 ; 0       ;
+;      - Mux29~0                             ; 1                 ; 0       ;
+;      - Mux28~0                             ; 1                 ; 0       ;
+;      - Mux27~0                             ; 1                 ; 0       ;
+;      - Mux26~0                             ; 1                 ; 0       ;
+;      - Mux25~0                             ; 1                 ; 0       ;
+;      - Mux24~0                             ; 1                 ; 0       ;
+;      - Mux23~0                             ; 1                 ; 0       ;
+;      - Mux22~0                             ; 1                 ; 0       ;
+;      - Mux21~0                             ; 1                 ; 0       ;
+;      - Mux20~0                             ; 1                 ; 0       ;
+;      - Mux19~0                             ; 1                 ; 0       ;
+;      - Mux18~0                             ; 1                 ; 0       ;
+;      - Mux17~0                             ; 1                 ; 0       ;
+;      - Mux16~0                             ; 1                 ; 0       ;
+;      - Mux15~0                             ; 1                 ; 0       ;
+;      - Mux14~0                             ; 1                 ; 0       ;
+;      - Mux13~0                             ; 1                 ; 0       ;
+;      - Mux12~0                             ; 1                 ; 0       ;
+;      - Mux11~0                             ; 1                 ; 0       ;
+;      - Mux10~0                             ; 1                 ; 0       ;
+;      - Mux9~0                              ; 1                 ; 0       ;
+; SW[1]                                      ;                   ;         ;
+;      - Mux32~0                             ; 1                 ; 0       ;
+;      - Mux31~0                             ; 1                 ; 0       ;
+;      - Mux30~0                             ; 1                 ; 0       ;
+;      - Mux29~0                             ; 1                 ; 0       ;
+;      - Mux28~0                             ; 1                 ; 0       ;
+;      - Mux27~0                             ; 1                 ; 0       ;
+;      - Mux26~0                             ; 1                 ; 0       ;
+;      - Mux25~0                             ; 1                 ; 0       ;
+;      - Mux24~0                             ; 1                 ; 0       ;
+;      - Mux23~0                             ; 1                 ; 0       ;
+;      - Mux22~0                             ; 1                 ; 0       ;
+;      - Mux21~0                             ; 1                 ; 0       ;
+;      - Mux20~0                             ; 1                 ; 0       ;
+;      - Mux19~0                             ; 1                 ; 0       ;
+;      - Mux18~0                             ; 1                 ; 0       ;
+;      - Mux17~0                             ; 1                 ; 0       ;
+;      - Mux16~0                             ; 1                 ; 0       ;
+;      - Mux15~0                             ; 1                 ; 0       ;
+;      - Mux14~0                             ; 1                 ; 0       ;
+;      - Mux13~0                             ; 1                 ; 0       ;
+;      - Mux12~0                             ; 1                 ; 0       ;
+;      - Mux11~0                             ; 1                 ; 0       ;
+;      - Mux10~0                             ; 1                 ; 0       ;
+;      - Mux9~0                              ; 1                 ; 0       ;
+; SW[2]                                      ;                   ;         ;
+;      - Mux8~0                              ; 1                 ; 0       ;
+;      - Mux7~0                              ; 1                 ; 0       ;
+;      - Mux6~0                              ; 1                 ; 0       ;
+;      - Mux5~0                              ; 1                 ; 0       ;
+;      - rtl~66                              ; 1                 ; 0       ;
+;      - rtl~67                              ; 1                 ; 0       ;
+;      - LEDR~0                              ; 1                 ; 0       ;
+;      - Mux2~0                              ; 1                 ; 0       ;
+;      - rtl~68                              ; 1                 ; 0       ;
+;      - rtl~69                              ; 1                 ; 0       ;
+; SW[3]                                      ;                   ;         ;
+;      - Mux8~0                              ; 1                 ; 0       ;
+;      - Mux7~0                              ; 1                 ; 0       ;
+;      - Mux6~0                              ; 1                 ; 0       ;
+;      - Mux5~0                              ; 1                 ; 0       ;
+;      - rtl~66                              ; 1                 ; 0       ;
+;      - rtl~67                              ; 1                 ; 0       ;
+;      - LEDR~0                              ; 1                 ; 0       ;
+;      - Mux2~0                              ; 1                 ; 0       ;
+;      - rtl~68                              ; 1                 ; 0       ;
+;      - rtl~69                              ; 1                 ; 0       ;
+; KEY[1]                                     ;                   ;         ;
+;      - KEY[1]~inputCLKENA0                 ; 0                 ; 0       ;
+; KEY[0]                                     ;                   ;         ;
+;      - Z                                   ; 0                 ; 0       ;
+;      - N                                   ; 0                 ; 0       ;
+;      - RF:RF_block|r3[0]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r3[1]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r3[2]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r3[3]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r3[4]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r3[5]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r3[6]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r3[7]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r2[0]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r2[1]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r2[2]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r2[3]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r2[4]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r2[5]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r2[6]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r2[7]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r1[0]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r1[1]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r1[2]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r1[3]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r1[4]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r1[5]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r1[6]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r1[7]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r0[0]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r0[1]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r0[2]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r0[3]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r0[4]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r0[5]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r0[6]                   ; 0                 ; 0       ;
+;      - RF:RF_block|r0[7]                   ; 0                 ; 0       ;
+;      - register_8bit:IR_reg|q[0]           ; 0                 ; 0       ;
+;      - register_8bit:IR_reg|q[1]           ; 0                 ; 0       ;
+;      - register_8bit:IR_reg|q[2]           ; 0                 ; 0       ;
+;      - register_8bit:IR_reg|q[3]           ; 0                 ; 0       ;
+;      - register_8bit:IR_reg|q[4]           ; 0                 ; 0       ;
+;      - register_8bit:IR_reg|q[5]           ; 0                 ; 0       ;
+;      - register_8bit:IR_reg|q[6]           ; 0                 ; 0       ;
+;      - register_8bit:IR_reg|q[7]           ; 0                 ; 0       ;
+;      - register_8bit:PC|q[0]               ; 0                 ; 0       ;
+;      - register_8bit:PC|q[1]               ; 0                 ; 0       ;
+;      - register_8bit:PC|q[2]               ; 0                 ; 0       ;
+;      - register_8bit:PC|q[3]               ; 0                 ; 0       ;
+;      - register_8bit:PC|q[4]               ; 0                 ; 0       ;
+;      - register_8bit:PC|q[5]               ; 0                 ; 0       ;
+;      - register_8bit:PC|q[6]               ; 0                 ; 0       ;
+;      - register_8bit:PC|q[7]               ; 0                 ; 0       ;
+;      - register_8bit:OpA|q[0]              ; 0                 ; 0       ;
+;      - register_8bit:OpA|q[1]              ; 0                 ; 0       ;
+;      - register_8bit:OpA|q[2]              ; 0                 ; 0       ;
+;      - register_8bit:OpA|q[3]              ; 0                 ; 0       ;
+;      - register_8bit:OpA|q[4]              ; 0                 ; 0       ;
+;      - register_8bit:OpA|q[5]              ; 0                 ; 0       ;
+;      - register_8bit:OpA|q[6]              ; 0                 ; 0       ;
+;      - register_8bit:OpA|q[7]              ; 0                 ; 0       ;
+;      - register_8bit:OpB|q[0]              ; 0                 ; 0       ;
+;      - register_8bit:OpB|q[1]              ; 0                 ; 0       ;
+;      - register_8bit:OpB|q[2]              ; 0                 ; 0       ;
+;      - register_8bit:OpB|q[3]              ; 0                 ; 0       ;
+;      - register_8bit:OpB|q[4]              ; 0                 ; 0       ;
+;      - register_8bit:OpB|q[5]              ; 0                 ; 0       ;
+;      - register_8bit:OpB|q[6]              ; 0                 ; 0       ;
+;      - register_8bit:OpB|q[7]              ; 0                 ; 0       ;
+;      - FSM:Control|state.c1                ; 0                 ; 0       ;
+;      - FSM:Control|state.c2                ; 0                 ; 0       ;
+;      - FSM:Control|state.c3_asn            ; 0                 ; 0       ;
+;      - FSM:Control|state.c4_asnsh          ; 0                 ; 0       ;
+;      - FSM:Control|state.c3_shift          ; 0                 ; 0       ;
+;      - FSM:Control|state.c3_ori            ; 0                 ; 0       ;
+;      - FSM:Control|state.c4_ori            ; 0                 ; 0       ;
+;      - FSM:Control|state.c5_ori            ; 0                 ; 0       ;
+;      - FSM:Control|state.c3_load           ; 0                 ; 0       ;
+;      - FSM:Control|state.c4_load           ; 0                 ; 0       ;
+;      - FSM:Control|state.c3_store          ; 0                 ; 0       ;
+;      - FSM:Control|state.c3_bpz            ; 0                 ; 0       ;
+;      - FSM:Control|state.c3_bz             ; 0                 ; 0       ;
+;      - FSM:Control|state.c3_bnz            ; 0                 ; 0       ;
+;      - FSM:Control|state.c3_jump           ; 0                 ; 0       ;
+;      - FSM:Control|state.c3_jal            ; 0                 ; 0       ;
+;      - FSM:Control|state.c4_jal            ; 0                 ; 0       ;
+;      - FSM:Control|state.c3_ldind          ; 0                 ; 0       ;
+;      - FSM:Control|state.c4_ldind          ; 0                 ; 0       ;
+;      - FSM:Control|state.c5_ldind          ; 0                 ; 0       ;
+;      - register_8bit:MDR_reg|q[0]          ; 0                 ; 0       ;
+;      - register_8bit:ALUOut_reg|q[0]       ; 0                 ; 0       ;
+;      - register_8bit:MDR_reg|q[1]          ; 0                 ; 0       ;
+;      - register_8bit:ALUOut_reg|q[1]       ; 0                 ; 0       ;
+;      - register_8bit:MDR_reg|q[2]          ; 0                 ; 0       ;
+;      - register_8bit:ALUOut_reg|q[2]       ; 0                 ; 0       ;
+;      - register_8bit:MDR_reg|q[3]          ; 0                 ; 0       ;
+;      - register_8bit:ALUOut_reg|q[3]       ; 0                 ; 0       ;
+;      - register_8bit:MDR_reg|q[4]          ; 0                 ; 0       ;
+;      - register_8bit:ALUOut_reg|q[4]       ; 0                 ; 0       ;
+;      - register_8bit:MDR_reg|q[5]          ; 0                 ; 0       ;
+;      - register_8bit:ALUOut_reg|q[5]       ; 0                 ; 0       ;
+;      - register_8bit:MDR_reg|q[6]          ; 0                 ; 0       ;
+;      - register_8bit:ALUOut_reg|q[6]       ; 0                 ; 0       ;
+;      - register_8bit:MDR_reg|q[7]          ; 0                 ; 0       ;
+;      - register_8bit:ALUOut_reg|q[7]       ; 0                 ; 0       ;
+;      - register_8bit:IR_reg|q[5]~DUPLICATE ; 0                 ; 0       ;
+;      - register_8bit:IR_reg|q[6]~DUPLICATE ; 0                 ; 0       ;
+;      - RF:RF_block|r3[5]~DUPLICATE         ; 0                 ; 0       ;
+;      - RF:RF_block|r2[1]~DUPLICATE         ; 0                 ; 0       ;
+;      - FSM:Control|state.c4_load~DUPLICATE ; 0                 ; 0       ;
+;      - FSM:Control|state.c3_ori~DUPLICATE  ; 0                 ; 0       ;
++--------------------------------------------+-------------------+---------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -1800,19 +1784,19 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------+---------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 ; Name                       ; Location            ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +----------------------------+---------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
-; FSM:Control|Selector0~1    ; LABCELL_X81_Y6_N45  ; 8       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; FSM:Control|WideOr0~0      ; LABCELL_X79_Y6_N9   ; 4       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; FSM:Control|WideOr0~1      ; LABCELL_X79_Y6_N36  ; 19      ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; FSM:Control|WideOr0~2      ; MLABCELL_X82_Y6_N33 ; 19      ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; FSM:Control|WideOr8        ; LABCELL_X81_Y6_N12  ; 9       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; FSM:Control|state.c1       ; FF_X82_Y6_N50       ; 40      ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; FSM:Control|state.c3_store ; FF_X79_Y6_N7        ; 2       ; Write enable ; no     ; --                   ; --               ; --                        ;
-; KEY[0]                     ; PIN_AA14            ; 116     ; Async. clear ; no     ; --                   ; --               ; --                        ;
-; KEY[1]                     ; PIN_AA15            ; 117     ; Clock        ; yes    ; Global Clock         ; GCLK6            ; --                        ;
-; RF:RF_block|Decoder0~0     ; MLABCELL_X82_Y8_N48 ; 8       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; RF:RF_block|Decoder0~1     ; MLABCELL_X82_Y8_N54 ; 12      ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; RF:RF_block|Decoder0~2     ; MLABCELL_X82_Y8_N57 ; 9       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; RF:RF_block|Decoder0~3     ; MLABCELL_X82_Y8_N51 ; 9       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; FSM:Control|Selector0~1    ; LABCELL_X80_Y8_N15  ; 8       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; FSM:Control|WideOr0~0      ; LABCELL_X80_Y8_N27  ; 4       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; FSM:Control|WideOr0~1      ; LABCELL_X77_Y8_N36  ; 18      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; FSM:Control|WideOr0~2      ; LABCELL_X77_Y9_N57  ; 19      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; FSM:Control|WideOr8        ; LABCELL_X79_Y9_N36  ; 9       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; FSM:Control|state.c1       ; FF_X80_Y8_N44       ; 37      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; FSM:Control|state.c3_store ; FF_X77_Y8_N28       ; 2       ; Write enable ; no     ; --                   ; --               ; --                        ;
+; KEY[0]                     ; PIN_AA14            ; 108     ; Async. clear ; no     ; --                   ; --               ; --                        ;
+; KEY[1]                     ; PIN_AA15            ; 109     ; Clock        ; yes    ; Global Clock         ; GCLK6            ; --                        ;
+; RF:RF_block|Decoder0~0     ; LABCELL_X79_Y8_N27  ; 8       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RF:RF_block|Decoder0~1     ; LABCELL_X83_Y9_N57  ; 9       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RF:RF_block|Decoder0~2     ; MLABCELL_X82_Y9_N27 ; 9       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; RF:RF_block|Decoder0~3     ; LABCELL_X79_Y8_N24  ; 8       ; Clock enable ; no     ; --                   ; --               ; --                        ;
 +----------------------------+---------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 
 
@@ -1821,7 +1805,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+----------+---------+----------------------+------------------+---------------------------+
 ; Name   ; Location ; Fan-Out ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +--------+----------+---------+----------------------+------------------+---------------------------+
-; KEY[1] ; PIN_AA15 ; 117     ; Global Clock         ; GCLK6            ; --                        ;
+; KEY[1] ; PIN_AA15 ; 109     ; Global Clock         ; GCLK6            ; --                        ;
 +--------+----------+---------+----------------------+------------------+---------------------------+
 
 
@@ -1830,7 +1814,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------------+------------------------+-------------------------+------------------------+-------------------------+------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+---------------------+-------------+------------+----------+----------------+----------------------+-----------------+-----------------+-------------------------------------------------------------------+
 ; Name                                                                                                     ; Type ; Mode        ; Clock Mode   ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Port A Input Registers ; Port A Output Registers ; Port B Input Registers ; Port B Output Registers ; Size ; Implementation Port A Depth ; Implementation Port A Width ; Implementation Port B Depth ; Implementation Port B Width ; Implementation Bits ; M10K blocks ; MLAB cells ; MIF      ; Location       ; Mixed Width RDW Mode ; Port A RDW Mode ; Port B RDW Mode ; Fits in MLABs                                                     ;
 +----------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------------+------------------------+-------------------------+------------------------+-------------------------+------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+---------------------+-------------+------------+----------+----------------+----------------------+-----------------+-----------------+-------------------------------------------------------------------+
-; memory:DataMem|DataMemory:inst|altsyncram:altsyncram_component|altsyncram_a1j1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; Single Clock ; 256          ; 8            ; --           ; --           ; yes                    ; no                      ; --                     ; --                      ; 2048 ; 256                         ; 8                           ; --                          ; --                          ; 2048                ; 1           ; 0          ; data.mif ; M10K_X76_Y6_N0 ; Don't care           ; New data        ; New data        ; No - Single Port Feed Through New Data with Unregistered Data Out ;
+; memory:DataMem|DataMemory:inst|altsyncram:altsyncram_component|altsyncram_a1j1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; Single Clock ; 256          ; 8            ; --           ; --           ; yes                    ; no                      ; --                     ; --                      ; 2048 ; 256                         ; 8                           ; --                          ; --                          ; 2048                ; 1           ; 0          ; data.mif ; M10K_X76_Y9_N0 ; Don't care           ; New data        ; New data        ; No - Single Port Feed Through New Data with Unregistered Data Out ;
 +----------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+--------------+------------------------+-------------------------+------------------------+-------------------------+------+-----------------------------+-----------------------------+-----------------------------+-----------------------------+---------------------+-------------+------------+----------+----------------+----------------------+-----------------+-----------------+-------------------------------------------------------------------+
 Note: Fitter may spread logical memories into multiple blocks to improve timing. The actual required RAM blocks can be found in the Fitter Resource Usage section.
 
@@ -1840,14 +1824,14 @@ Note: Fitter may spread logical memories into multiple blocks to improve timing.
 +---------------------------------------------+-------------------------+
 ; Routing Resource Type                       ; Usage                   ;
 +---------------------------------------------+-------------------------+
-; Block interconnects                         ; 527 / 289,320 ( < 1 % ) ;
-; C12 interconnects                           ; 7 / 13,420 ( < 1 % )    ;
-; C2 interconnects                            ; 199 / 119,108 ( < 1 % ) ;
+; Block interconnects                         ; 542 / 289,320 ( < 1 % ) ;
+; C12 interconnects                           ; 14 / 13,420 ( < 1 % )   ;
+; C2 interconnects                            ; 137 / 119,108 ( < 1 % ) ;
 ; C4 interconnects                            ; 98 / 56,300 ( < 1 % )   ;
 ; DQS bus muxes                               ; 0 / 25 ( 0 % )          ;
 ; DQS-18 I/O buses                            ; 0 / 25 ( 0 % )          ;
 ; DQS-9 I/O buses                             ; 0 / 25 ( 0 % )          ;
-; Direct links                                ; 47 / 289,320 ( < 1 % )  ;
+; Direct links                                ; 69 / 289,320 ( < 1 % )  ;
 ; Global clocks                               ; 1 / 16 ( 6 % )          ;
 ; HPS SDRAM PLL inputs                        ; 0 / 1 ( 0 % )           ;
 ; HPS SDRAM PLL outputs                       ; 0 / 1 ( 0 % )           ;
@@ -1905,10 +1889,10 @@ Note: Fitter may spread logical memories into multiple blocks to improve timing.
 ; Horizontal periphery clocks                 ; 0 / 72 ( 0 % )          ;
 ; Local interconnects                         ; 83 / 84,580 ( < 1 % )   ;
 ; Quadrant clocks                             ; 0 / 66 ( 0 % )          ;
-; R14 interconnects                           ; 40 / 12,676 ( < 1 % )   ;
-; R14/C12 interconnect drivers                ; 42 / 20,720 ( < 1 % )   ;
-; R3 interconnects                            ; 211 / 130,992 ( < 1 % ) ;
-; R6 interconnects                            ; 282 / 266,960 ( < 1 % ) ;
+; R14 interconnects                           ; 44 / 12,676 ( < 1 % )   ;
+; R14/C12 interconnect drivers                ; 53 / 20,720 ( < 1 % )   ;
+; R3 interconnects                            ; 194 / 130,992 ( < 1 % ) ;
+; R6 interconnects                            ; 306 / 266,960 ( < 1 % ) ;
 ; Spine clocks                                ; 1 / 360 ( < 1 % )       ;
 ; Wire stub REs                               ; 0 / 15,858 ( 0 % )      ;
 +---------------------------------------------+-------------------------+
@@ -2081,40 +2065,36 @@ Note: Fitter may spread logical memories into multiple blocks to improve timing.
 +-----------------+----------------------+-------------------+
 ; Source Clock(s) ; Destination Clock(s) ; Delay Added in ns ;
 +-----------------+----------------------+-------------------+
-; clock           ; clock                ; 9.9               ;
+; clock           ; clock                ; 8.3               ;
 +-----------------+----------------------+-------------------+
 Note: For more information on problematic transfers, consider running the Fitter again with the Optimize hold timing option (Settings Menu) turned off.
 This will disable optimization of problematic paths and expose them for further analysis using the TimeQuest Timing Analyzer.
 
 
-+-----------------------------------------------------------------------------+
-; Estimated Delay Added for Hold Timing Details                               ;
-+----------------------------+----------------------------+-------------------+
-; Source Register            ; Destination Register       ; Delay Added in ns ;
-+----------------------------+----------------------------+-------------------+
-; register_8bit:IR_reg|q[0]  ; FSM:Control|state.c3_store ; 0.416             ;
-; register_8bit:IR_reg|q[2]  ; FSM:Control|state.c3_store ; 0.403             ;
-; register_8bit:IR_reg|q[1]  ; FSM:Control|state.c3_store ; 0.359             ;
-; FSM:Control|state.c2       ; FSM:Control|state.c3_store ; 0.343             ;
-; register_8bit:IR_reg|q[3]  ; FSM:Control|state.c3_store ; 0.343             ;
-; RF:RF_block|r3[4]          ; register_8bit:OpA|q[4]     ; 0.224             ;
-; RF:RF_block|r3[2]          ; register_8bit:OpA|q[2]     ; 0.224             ;
-; RF:RF_block|r2[3]          ; register_8bit:OpA|q[3]     ; 0.223             ;
-; RF:RF_block|r2[1]          ; register_8bit:OpB|q[1]     ; 0.223             ;
-; RF:RF_block|r2[0]          ; register_8bit:OpA|q[0]     ; 0.223             ;
-; FSM:Control|state.c1       ; register_8bit:MDR_reg|q[2] ; 0.179             ;
-; RF:RF_block|r3[1]          ; register_8bit:OpA|q[1]     ; 0.145             ;
-; RF:RF_block|r2[5]          ; register_8bit:OpA|q[5]     ; 0.134             ;
-; FSM:Control|state.c4_ldind ; register_8bit:MDR_reg|q[1] ; 0.133             ;
-; RF:RF_block|r0[5]          ; register_8bit:OpA|q[5]     ; 0.108             ;
-; RF:RF_block|r2[2]          ; register_8bit:OpA|q[2]     ; 0.104             ;
-; RF:RF_block|r3[3]          ; register_8bit:OpA|q[3]     ; 0.090             ;
-; RF:RF_block|r1[2]          ; register_8bit:OpA|q[2]     ; 0.088             ;
-; RF:RF_block|r3[0]          ; register_8bit:OpA|q[0]     ; 0.084             ;
-; FSM:Control|state.c3_load  ; register_8bit:MDR_reg|q[1] ; 0.053             ;
-; FSM:Control|state.c3_ldind ; register_8bit:MDR_reg|q[1] ; 0.053             ;
-+----------------------------+----------------------------+-------------------+
-Note: This table only shows the top 21 path(s) that have the largest delay added for hold.
++----------------------------------------------------------------------------+
+; Estimated Delay Added for Hold Timing Details                              ;
++---------------------------+----------------------------+-------------------+
+; Source Register           ; Destination Register       ; Delay Added in ns ;
++---------------------------+----------------------------+-------------------+
+; RF:RF_block|r3[5]         ; register_8bit:OpA|q[5]     ; 0.233             ;
+; RF:RF_block|r3[6]         ; register_8bit:OpA|q[6]     ; 0.230             ;
+; RF:RF_block|r3[7]         ; register_8bit:OpA|q[7]     ; 0.226             ;
+; RF:RF_block|r3[2]         ; register_8bit:OpA|q[2]     ; 0.225             ;
+; FSM:Control|state.c2      ; FSM:Control|state.c3_shift ; 0.188             ;
+; register_8bit:IR_reg|q[3] ; FSM:Control|state.c3_store ; 0.188             ;
+; register_8bit:IR_reg|q[1] ; FSM:Control|state.c3_jal   ; 0.182             ;
+; register_8bit:IR_reg|q[2] ; FSM:Control|state.c3_bnz   ; 0.167             ;
+; register_8bit:IR_reg|q[0] ; FSM:Control|state.c3_shift ; 0.159             ;
+; RF:RF_block|r2[1]         ; register_8bit:OpA|q[1]     ; 0.149             ;
+; RF:RF_block|r0[2]         ; register_8bit:OpA|q[2]     ; 0.118             ;
+; RF:RF_block|r2[6]         ; register_8bit:OpA|q[6]     ; 0.103             ;
+; RF:RF_block|r2[7]         ; register_8bit:OpA|q[7]     ; 0.103             ;
+; RF:RF_block|r2[5]         ; register_8bit:OpA|q[5]     ; 0.101             ;
+; RF:RF_block|r1[4]         ; register_8bit:OpA|q[4]     ; 0.087             ;
+; RF:RF_block|r0[5]         ; register_8bit:OpA|q[5]     ; 0.065             ;
+; RF:RF_block|r0[7]         ; register_8bit:OpA|q[7]     ; 0.064             ;
++---------------------------+----------------------------+-------------------+
+Note: This table only shows the top 17 path(s) that have the largest delay added for hold.
 
 
 +-----------------+
@@ -2135,7 +2115,7 @@ Warning (16406): 1 global input pin(s) will use non-dedicated clock routing
 Info (11191): Automatically promoted 1 clock (1 global)
     Info (11162): KEY[1]~inputCLKENA0 with 110 fanout uses global clock CLKCTRL_G6
         Info (12525): This signal is driven by core routing -- it may be moved during placement to reduce routing delays
-Info (184021): Fitter periphery placement operations ending: elapsed time is 00:00:01
+Info (184021): Fitter periphery placement operations ending: elapsed time is 00:00:00
 Info (176233): Starting register packing
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
@@ -2148,7 +2128,7 @@ Warning (15705): Ignored locations or region assignments to the following nodes
     Warning (15706): Node "SW[7]" is assigned to location or region, but does not exist in design
     Warning (15706): Node "SW[8]" is assigned to location or region, but does not exist in design
     Warning (15706): Node "SW[9]" is assigned to location or region, but does not exist in design
-Info (11798): Fitter preparation operations ending: elapsed time is 00:00:37
+Info (11798): Fitter preparation operations ending: elapsed time is 00:00:14
 Info (332104): Reading SDC File: 'multicycle.sdc'
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in TimeQuest to see clock uncertainties.
@@ -2159,35 +2139,35 @@ Info (332111): Found 1 clocks
     Info (332111):   20.000        clock
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
-Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:07
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:04
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
-Info (170192): Fitter placement operations ending: elapsed time is 00:00:06
+Info (170192): Fitter placement operations ending: elapsed time is 00:00:04
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 0% of the available device resources
     Info (170196): Router estimated peak interconnect usage is 3% of the available device resources in the region that extends from location X78_Y0 to location X89_Y10
-Info (170194): Fitter routing operations ending: elapsed time is 00:00:05
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 1.49 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.48 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:10
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:07
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
-Info (144001): Generated suppressed messages file C:/Users/abhin/Desktop/multicycle/multicycle/multicycle.fit.smsg
+Info (144001): Generated suppressed messages file X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/multicycle.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 15 warnings
-    Info: Peak virtual memory: 1952 megabytes
-    Info: Processing ended: Tue Mar 22 23:28:52 2016
-    Info: Elapsed time: 00:02:43
-    Info: Total CPU time (on all processors): 00:01:23
+    Info: Peak virtual memory: 2043 megabytes
+    Info: Processing ended: Wed Mar 23 17:11:40 2016
+    Info: Elapsed time: 00:01:02
+    Info: Total CPU time (on all processors): 00:01:12
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in C:/Users/abhin/Desktop/multicycle/multicycle/multicycle.fit.smsg.
+The suppressed messages can be found in X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/multicycle.fit.smsg.
 
 

@@ -39,7 +39,7 @@ output reg	[9:0] LEDR;
 
 // ------------------------- Registers/Wires ------------------------ //
 wire	clock, reset;
-wire	IRLoad, MDRLoad, MemRead, MemWrite, PCWrite, RegIn, AddrSel, MemDirSel;
+wire	IRLoad, MDRLoad, MemRead, MemWrite, PCWrite, RegIn, AddrSel, MemDir;
 wire	ALU1, ALUOutWrite, FlagWrite, OpABLoad, OpASel, RFWrite;
 wire	[7:0] OpBwire, PCwire, OpAwire, RFout1wire, RFout2wire, MemDirWire;
 wire	[7:0] ALU1wire, ALU2wire, ALUwire, ALUOut, MDRwire, MEMwire;
@@ -60,7 +60,7 @@ FSM		Control(
 	.PCwrite(PCWrite),.AddrSel(AddrSel),.MemRead(MemRead),.MemWrite(MemWrite),
 	.IRload(IRLoad),.OpASel(OpASel),.MDRload(MDRLoad),.OpABLoad(OpABLoad),
 	.ALU1(ALU1),.ALUOutWrite(ALUOutWrite),.RFWrite(RFWrite),.RegIn(RegIn),
-	.FlagWrite(FlagWrite),.ALU2(ALU2),.ALUop(ALUOp),.MemDirSel(MemDirSel)
+	.FlagWrite(FlagWrite),.ALU2(ALU2),.ALUop(ALUOp),.MemDirSel(MemDir)
 );
 
 memory	DataMem(
@@ -122,7 +122,7 @@ mux2to1_8bit 		AddrSel_mux(
 
 mux2to1_8bit 		MemDirSel_mux(
 	.data0x(MemDirWire),.data1x(MDRwire),
-	.sel(MemDirSel),.result(AddrWire)
+	.sel(MemDir),.result(AddrWire)
 );
 
 mux2to1_8bit 		RegMux(

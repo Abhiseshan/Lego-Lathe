@@ -1,5 +1,5 @@
 Analysis & Synthesis report for multicycle
-Tue Mar 22 23:26:03 2016
+Wed Mar 23 17:10:36 2016
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 
 
@@ -56,7 +56,7 @@ agreement for further details.
 +------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                 ;
 +---------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Mar 22 23:26:02 2016      ;
+; Analysis & Synthesis Status     ; Successful - Wed Mar 23 17:10:36 2016      ;
 ; Quartus II 64-Bit Version       ; 15.0.0 Build 145 04/22/2015 SJ Web Edition ;
 ; Revision Name                   ; multicycle                                 ;
 ; Top-level Entity Name           ; multicycle                                 ;
@@ -175,35 +175,35 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                       ;
-+----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                         ; Library ;
-+----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------+---------+
-; register_8bit.v                  ; yes             ; User Verilog HDL File                  ; C:/Users/abhin/Desktop/multicycle/multicycle/register_8bit.v         ;         ;
-; mux2to1_8bit.v                   ; yes             ; User Verilog HDL File                  ; C:/Users/abhin/Desktop/multicycle/multicycle/mux2to1_8bit.v          ;         ;
-; mux2to1_2bit.v                   ; yes             ; User Verilog HDL File                  ; C:/Users/abhin/Desktop/multicycle/multicycle/mux2to1_2bit.v          ;         ;
-; mux5to1_8bit.v                   ; yes             ; User Verilog HDL File                  ; C:/Users/abhin/Desktop/multicycle/multicycle/mux5to1_8bit.v          ;         ;
-; multicycle.v                     ; yes             ; User Verilog HDL File                  ; C:/Users/abhin/Desktop/multicycle/multicycle/multicycle.v            ;         ;
-; DataMemory.v                     ; yes             ; User Wizard-Generated File             ; C:/Users/abhin/Desktop/multicycle/multicycle/DataMemory.v            ;         ;
-; ALU.v                            ; yes             ; User Verilog HDL File                  ; C:/Users/abhin/Desktop/multicycle/multicycle/ALU.v                   ;         ;
-; RF.v                             ; yes             ; User Verilog HDL File                  ; C:/Users/abhin/Desktop/multicycle/multicycle/RF.v                    ;         ;
-; extend.v                         ; yes             ; User Verilog HDL File                  ; C:/Users/abhin/Desktop/multicycle/multicycle/extend.v                ;         ;
-; HEX.v                            ; yes             ; User Verilog HDL File                  ; C:/Users/abhin/Desktop/multicycle/multicycle/HEX.v                   ;         ;
-; FSM.v                            ; yes             ; User Verilog HDL File                  ; C:/Users/abhin/Desktop/multicycle/multicycle/FSM.v                   ;         ;
-; memory.bdf                       ; yes             ; User Block Diagram/Schematic File      ; C:/Users/abhin/Desktop/multicycle/multicycle/memory.bdf              ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
-; aglobal150.inc                   ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/aglobal150.inc        ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
-; altrom.inc                       ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/altrom.inc            ;         ;
-; altram.inc                       ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/altram.inc            ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/altdpram.inc          ;         ;
-; db/altsyncram_a1j1.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/abhin/Desktop/multicycle/multicycle/db/altsyncram_a1j1.tdf  ;         ;
-; data.mif                         ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/abhin/Desktop/multicycle/multicycle/data.mif                ;         ;
-+----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                     ;
++----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                                       ; Library ;
++----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------------------------------------+---------+
+; register_8bit.v                  ; yes             ; User Verilog HDL File                  ; X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/register_8bit.v        ;         ;
+; mux2to1_8bit.v                   ; yes             ; User Verilog HDL File                  ; X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/mux2to1_8bit.v         ;         ;
+; mux2to1_2bit.v                   ; yes             ; User Verilog HDL File                  ; X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/mux2to1_2bit.v         ;         ;
+; mux5to1_8bit.v                   ; yes             ; User Verilog HDL File                  ; X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/mux5to1_8bit.v         ;         ;
+; multicycle.v                     ; yes             ; User Verilog HDL File                  ; X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/multicycle.v           ;         ;
+; DataMemory.v                     ; yes             ; User Wizard-Generated File             ; X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/DataMemory.v           ;         ;
+; ALU.v                            ; yes             ; User Verilog HDL File                  ; X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/ALU.v                  ;         ;
+; RF.v                             ; yes             ; User Verilog HDL File                  ; X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/RF.v                   ;         ;
+; extend.v                         ; yes             ; User Verilog HDL File                  ; X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/extend.v               ;         ;
+; HEX.v                            ; yes             ; User Verilog HDL File                  ; X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/HEX.v                  ;         ;
+; FSM.v                            ; yes             ; User Verilog HDL File                  ; X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/FSM.v                  ;         ;
+; memory.bdf                       ; yes             ; User Block Diagram/Schematic File      ; X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/memory.bdf             ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/altsyncram.tdf                                      ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/stratix_ram_block.inc                               ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_mux.inc                                         ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_decode.inc                                      ;         ;
+; aglobal150.inc                   ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/aglobal150.inc                                      ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/a_rdenreg.inc                                       ;         ;
+; altrom.inc                       ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/altrom.inc                                          ;         ;
+; altram.inc                       ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/altram.inc                                          ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                           ; c:/altera/15.0/quartus/libraries/megafunctions/altdpram.inc                                        ;         ;
+; db/altsyncram_a1j1.tdf           ; yes             ; Auto-Generated Megafunction            ; X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/db/altsyncram_a1j1.tdf ;         ;
+; data.mif                         ; yes             ; Auto-Found Memory Initialization File  ; X:/Documents/GitHub/Lego-Lathe/Refrence Files/Lab7_MulticycleCPU/multicycle/data.mif               ;         ;
++----------------------------------+-----------------+----------------------------------------+----------------------------------------------------------------------------------------------------+---------+
 
 
 +------------------------------------------------------------+
@@ -211,14 +211,14 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+--------------+
 ; Resource                                    ; Usage        ;
 +---------------------------------------------+--------------+
-; Estimate of Logic utilization (ALMs needed) ; 150          ;
+; Estimate of Logic utilization (ALMs needed) ; 149          ;
 ;                                             ;              ;
-; Combinational ALUT usage for logic          ; 232          ;
+; Combinational ALUT usage for logic          ; 231          ;
 ;     -- 7 input functions                    ; 0            ;
-;     -- 6 input functions                    ; 61           ;
+;     -- 6 input functions                    ; 60           ;
 ;     -- 5 input functions                    ; 62           ;
-;     -- 4 input functions                    ; 57           ;
-;     -- <=3 input functions                  ; 52           ;
+;     -- 4 input functions                    ; 66           ;
+;     -- <=3 input functions                  ; 43           ;
 ;                                             ;              ;
 ; Dedicated logic registers                   ; 102          ;
 ;                                             ;              ;
@@ -230,8 +230,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;                                             ;              ;
 ; Maximum fan-out node                        ; KEY[1]~input ;
 ; Maximum fan-out                             ; 110          ;
-; Total fan-out                               ; 1643         ;
-; Average fan-out                             ; 3.59         ;
+; Total fan-out                               ; 1646         ;
+; Average fan-out                             ; 3.60         ;
 +---------------------------------------------+--------------+
 
 
@@ -240,9 +240,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                   ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                       ; Library Name ;
 +----------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------+--------------+
-; |multicycle                                  ; 232 (42)          ; 102 (2)      ; 2048              ; 0          ; 58   ; 0            ; |multicycle                                                                                               ; work         ;
+; |multicycle                                  ; 231 (42)          ; 102 (2)      ; 2048              ; 0          ; 58   ; 0            ; |multicycle                                                                                               ; work         ;
 ;    |ALU:ALU|                                 ; 58 (58)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |multicycle|ALU:ALU                                                                                       ; work         ;
-;    |FSM:Control|                             ; 29 (29)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |multicycle|FSM:Control                                                                                   ; work         ;
+;    |FSM:Control|                             ; 28 (28)           ; 20 (20)      ; 0                 ; 0          ; 0    ; 0            ; |multicycle|FSM:Control                                                                                   ; work         ;
 ;    |HEXs:HEX_display|                        ; 42 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |multicycle|HEXs:HEX_display                                                                              ; work         ;
 ;       |HEX:hex0|                             ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |multicycle|HEXs:HEX_display|HEX:hex0                                                                     ; work         ;
 ;       |HEX:hex1|                             ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |multicycle|HEXs:HEX_display|HEX:hex1                                                                     ; work         ;
@@ -346,12 +346,12 @@ Encoding Type:  One-Hot
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
 ; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |multicycle|register_8bit:OpB|q[0]               ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |multicycle|register_8bit:OpA|q[4]               ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |multicycle|register_8bit:OpA|q[2]               ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |multicycle|mux2to1_8bit:MemDirSel_mux|result[4] ;
 ; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |multicycle|Mux16                                ;
-; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |multicycle|Mux30                                ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |multicycle|Mux1                                 ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |multicycle|Mux20                                ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |multicycle|Mux2                                 ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |multicycle|Mux7                                 ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |multicycle|mux2to1_8bit:MemDirSel_mux|result[3] ;
 ; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; No name available in netlist                     ;
 ; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |multicycle|FSM:Control|state                    ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |multicycle|mux5to1_8bit:ALU2_mux|Mux6           ;
@@ -536,23 +536,23 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; arriav_ff             ; 102                         ;
 ;     CLR               ; 20                          ;
 ;     ENA CLR           ; 82                          ;
-; arriav_lcell_comb     ; 238                         ;
+; arriav_lcell_comb     ; 237                         ;
 ;     arith             ; 9                           ;
 ;         1 data inputs ; 1                           ;
 ;         3 data inputs ; 1                           ;
 ;         5 data inputs ; 7                           ;
-;     normal            ; 229                         ;
+;     normal            ; 228                         ;
 ;         1 data inputs ; 6                           ;
 ;         2 data inputs ; 9                           ;
-;         3 data inputs ; 41                          ;
-;         4 data inputs ; 57                          ;
+;         3 data inputs ; 32                          ;
+;         4 data inputs ; 66                          ;
 ;         5 data inputs ; 55                          ;
-;         6 data inputs ; 61                          ;
+;         6 data inputs ; 60                          ;
 ; boundary_port         ; 58                          ;
 ; stratixv_ram_block    ; 8                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 8.00                        ;
-; Average LUT depth     ; 4.52                        ;
+; Average LUT depth     ; 4.50                        ;
 +-----------------------+-----------------------------+
 
 
@@ -561,7 +561,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:04     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -571,7 +571,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
-    Info: Processing started: Tue Mar 22 23:25:36 2016
+    Info: Processing started: Wed Mar 23 17:10:20 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off multicycle -c multicycle
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file register_8bit.v
@@ -641,15 +641,15 @@ Info (286030): Timing-Driven Synthesis is running
 Info (17049): 6 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 370 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 369 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 6 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 304 logic cells
+    Info (21061): Implemented 303 logic cells
     Info (21064): Implemented 8 RAM segments
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 744 megabytes
-    Info: Processing ended: Tue Mar 22 23:26:03 2016
-    Info: Elapsed time: 00:00:27
-    Info: Total CPU time (on all processors): 00:00:38
+    Info: Peak virtual memory: 746 megabytes
+    Info: Processing ended: Wed Mar 23 17:10:36 2016
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:36
 
 

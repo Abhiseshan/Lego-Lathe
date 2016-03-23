@@ -459,8 +459,8 @@ ALUOutWrite, RFWrite, RegIn, FlagWrite, MemDirSel//, state
 					ALU2 = 3'b000;
 					ALUop = 3'b000;
 					ALUOutWrite = 1;
-					RFWrite = 1;
-					RegIn = 1;
+					RFWrite = 0;
+					RegIn = 0;
 					FlagWrite = 0;
 					MemDirSel = 0;
 				end
@@ -478,7 +478,7 @@ ALUOutWrite, RFWrite, RegIn, FlagWrite, MemDirSel//, state
 					ALU2 = 3'b010;
 					ALUop = 3'b000;
 					ALUOutWrite = 0;
-					RFWrite = 0;
+					RFWrite = 1;
 					RegIn = 0;
 					FlagWrite = 0;
 					MemDirSel = 0;
@@ -505,7 +505,7 @@ ALUOutWrite, RFWrite, RegIn, FlagWrite, MemDirSel//, state
 			c4_ldind: 	//control = 19'b0010001000000000000;
 				begin
 					PCwrite = 0;
-					AddrSel = 1;
+					AddrSel = 0;
 					MemRead = 1;
 					MemWrite = 0;
 					IRload = 0;
@@ -534,9 +534,9 @@ ALUOutWrite, RFWrite, RegIn, FlagWrite, MemDirSel//, state
 					ALU1 = 0;
 					ALU2 = 3'b000;
 					ALUop = 3'b000;
-					ALUOutWrite = 1;
+					ALUOutWrite = 0;
 					RFWrite = 1;
-					RegIn = 0;
+					RegIn = 1;
 					FlagWrite = 0;
 					MemDirSel = 0;
 				end
