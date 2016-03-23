@@ -478,7 +478,7 @@ ALUOutWrite, RFWrite, RegIn, FlagWrite, MemDirSel//, state
 					ALU2 = 3'b010;
 					ALUop = 3'b000;
 					ALUOutWrite = 0;
-					RFWrite = 1;
+					RFWrite = 0;
 					RegIn = 0;
 					FlagWrite = 0;
 					MemDirSel = 0;
@@ -536,7 +536,7 @@ ALUOutWrite, RFWrite, RegIn, FlagWrite, MemDirSel//, state
 					ALUop = 3'b000;
 					ALUOutWrite = 1;
 					RFWrite = 1;
-					RegIn = 1;
+					RegIn = 0;
 					FlagWrite = 0;
 					MemDirSel = 0;
 				end
