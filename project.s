@@ -88,14 +88,17 @@ START:
 
 	# Checks if password is entered
 	call 	pollForPassword
+	call 	setHexOFF
 	movia 	r9, PASSWORD	
 	bne 	r9, r2, exitInterrupt 
 
 	movi 	r8, 0x1
 
+	#Enable timer interrupts again
 	movia 	et, TIMER_INTERRUPT
 	movia 	r9, 0b0111
 	stw		r9, 4(et)
+
 	call    setHexON
 	call 	audio
 	
@@ -292,9 +295,9 @@ setHexPIN1:
 
 	#Set the HEX Display to say OFF
 	movia 	r9, SEVEN_SEG_45
-	movia 	r10, 0x00004000 
+	movia 	r10, 0x0000CE00 
 	stwio 	r10, 0(r9)
-	movia 	r10, 0x00000000
+	movia 	r10, 0x00000020
 	stwio 	r10, 0(r9)
 	
 	ldw 	ra, 0(sp)
@@ -307,9 +310,9 @@ setHexPIN2:
 
 	#Set the HEX Display to say OFF
 	movia 	r9, SEVEN_SEG_45
-	movia 	r10, 0x00004040 
+	movia 	r10, 0x0000CE00 
 	stwio 	r10, 0(r9)
-	movia 	r10, 0x00000000 
+	movia 	r10, 0x00002020 
 	stwio 	r10, 0(r9)
 	
 	ldw 	ra, 0(sp)
@@ -322,29 +325,14 @@ setHexPIN3:
 
 	#Set the HEX Display to say OFF
 	movia 	r9, SEVEN_SEG_45
-	movia 	r10, 0x00004040 
+	movia 	r10, 0x0000CE00
 	stwio 	r10, 0(r9)
-	movia 	r10, 0x40000000 
+	movia 	r10, 0x00202020 
 	stwio 	r10, 0(r9)
 	
 	ldw 	ra, 0(sp)
 	addi 	sp, sp, 4
 	br 		poll
-
-setHexPIN4:
-	subi	sp, sp, 4
-	stw 	ra, 0(sp)
-
-	#Set the HEX Display to say OFF
-	movia 	r9, SEVEN_SEG_45
-	movia 	r10, 0x00004040 
-	stwio 	r10, 0(r9)
-	movia 	r10, 0x40400000 
-	stwio 	r10, 0(r9)
-	
-	ldw 	ra, 0(sp)
-	addi 	sp, sp, 4
-	br 		poll	
 
 
 pollForPassword:
@@ -380,7 +368,7 @@ poll:
 
 	#store to entered pin
 	or 		r2, r2, r10
-	srli 	r2, r2, 2
+	srli 	r2, r2, 8
 
 	#Set coloums to input, rows to output	
 	movia 	r10, 0x0F
@@ -395,7 +383,7 @@ poll:
 
 	#Check if the user has entered 4 pins
 	beq 	r0, r12	, exitPassword
-	srli 	r2, r2, 2
+	srli 	r2, r2, 8
 
 	#Clear the edge capture register
 	
@@ -405,15 +393,17 @@ DELAY:
 	subi 	r10, r10, 1
 	bne 	r10, r10, DELAY
 	
+	#Clear the buffer
 	movi 	r10, 0xF
 	stwio 	r10, 12(r9)
 
+	#Set hexDisplay keys
 	movi 	r10, 3
 	beq 	r12, r10, setHexPIN1
 	movi 	r10, 2
-	beq 	r12, r10, setHexPIN1
+	beq 	r12, r10, setHexPIN2
 	movi 	r10, 1
-	beq 	r12, r10, setHexPIN1
+	beq 	r12, r10, setHexPIN3
 	
 	br 		poll
 
