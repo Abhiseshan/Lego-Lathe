@@ -1,11 +1,12 @@
 .equ TIMER_INTERRUPT, 0xFF202000
 .equ TIMER_INTERRUPT2, 0xFF202000
-.equ interrupt_time, 100000000
+.equ interrupt_time, 500000000
 .equ interrupt_time2,1000000000
 .equ PUSHBUTTONS, 0xFF200050
 .equ LEGOCONTROLLER, 0xFF200060
-.equ time_baseMotor, 100000
-.equ time_baseMotor2,100000
+.equ time_baseMotor, 1000000
+.equ time_baseMotor2,20000000
+
 /*
  * Fixed Registers
  * r8  - Status Register - If the machine is in stop=0/start=1 mode
@@ -96,7 +97,7 @@ InterruptTimer:
 	addi    r22,r22,0x1
 	beq     r22,r23, STOP
 	#move the base motor	
-	movia  	r9, 0xffffff0c 				#enabling the motor 0, direction to forward
+	movia  	r9, 0xFFFFFF0E				#enabling the motor 0, direction to forward
   	stwio  	r9, 0(r15)					#Turn on motor
 	movui 	r4, %lo(time_baseMotor) 	
 	movui 	r5, %hi(time_baseMotor)
@@ -159,8 +160,8 @@ move:
 forward:	
 	movia  	r9, 0xFFFFFB0B				#enabling the motor 1 in forward , along with sensor and motor 2 and 3
   	stwio  	r9, 0(r15)					#Turn on motor
-	movui 	r4, %lo(time_baseMotor) 	
-	movui 	r5, %hi(time_baseMotor)
+	movui 	r4, %lo(time_baseMotor2) 	
+	movui 	r5, %hi(time_baseMotor2)
 	call 	timer
 	movia	r9, 0xFFFFFB0F		
 	stwio 	r9, 0(r15)					#Turn off motor keeping drill and material motor on	
@@ -169,8 +170,8 @@ forward:
 backward:	
 	movia  	r9, 0xFFFFFB03			  	#enabling the motor 1 in reverse, along with sensor and motor 2 and 3
   	stwio  	r9, 0(r15)					#Turn on motor
-	movui 	r4, %lo(time_baseMotor) 	
-	movui 	r5, %hi(time_baseMotor)
+	movui 	r4, %lo(time_baseMotor2) 	
+	movui 	r5, %hi(time_baseMotor2)
 	call 	timer
 	movia	r9, 0xFFFFFB0F		
 	stwio 	r9, 0(r15)					#Turn off motor keeping drill and material motor on		
