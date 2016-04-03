@@ -374,7 +374,7 @@ poll:
 	andi 	r10, r10, 0xF
 
 	#store to entered pin
-	ori 	r2, r2, r10
+	or 	r2, r2, r10
 	srli 	r2, r2, 2
 
 	#Set coloums to input, rows to output	
@@ -385,7 +385,7 @@ poll:
 
 	ldwio 	r10, 0(r9)
 	andi 	r10, r10, 0xF 
-	ori 	r2, r2, r10
+	or 	r2, r2, r10
 	subi	r11, r11, 1	
 
 	#Check if the user has entered 4 pins
