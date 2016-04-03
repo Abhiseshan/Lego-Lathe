@@ -21,7 +21,7 @@ audio:
 beep:	
 
 	movi 	r19, 10000
-	movi 	r20 1000
+	movi 	r20, 1000
 wave:	
 	movia 	r16, ADDR_AUDIODACFIFO
 	movia 	r17, ALARM_SOUND

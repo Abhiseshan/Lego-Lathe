@@ -5,7 +5,7 @@
 .equ PUSHBUTTONS, 0xFF200050
 .equ LEGOCONTROLLER, 0xFF200060
 .equ time_baseMotor, 1000000
-.equ time_baseMotor2,20000000
+.equ time_baseMotor2,8000000
 .equ SEVEN_SEG_03, 0xFF200020 
 .equ SEVEN_SEG_45, 0xFF200030
 .equ HEXKEYPAD, 0xFF200070
@@ -109,8 +109,8 @@ InterruptTimer:
 	#Check for start mode
 	movi 	r9, 0x1
 	bne 	r8, r9, exitInterrupt		#If mode not start, exit
-	addi    r22,r22,0x1
-	beq     r22,r23, STOP
+	#addi    r22,r22,0x1
+	#beq     r22,r23, STOP
 	
 	#move the base motor	
 	movia  	r9, 0xFFFFFF0E				#enabling the motor 0, direction to forward
@@ -136,42 +136,51 @@ readfirstsensor:
 	andi    r11, r11, 0x0f 	
 	
 secondsensor:	
-	movia r9, 0xFFFFEB0F				#enable sensor 1 and motor 1
+	movia r9, 0xFFFFEF0F			#enable sensor 1 and motor 1
 	stwio r9, 0(r15)
-
+	ldwio	r10,0(r8)
+	srli	r10,r10,13
+	andi	r10,r10,0x1
+	bne		r0,	r10,secondsensor
+	
 readsecondsensor:
 	ldwio   r12, 0(r15)
 	srli    r12, r12, 27
 	andi    r12, r12, 0x0f 	
 
 thirdsensor:	
-	movia r9, 0xFFFFAB0F				#enable sensor 2 and motor 1
+	movia r9, 0xFFFFBF0F				#enable sensor 2 and motor 1
 	stwio r9, 0(r15)
-	
+	ldwio	r10,0(r8)
+	srli	r10,r10,15
+	andi	r10,r10,0x1
+	bne		r0,	r10,thirdsensor
 readthirdsensor:
 	ldwio   r13, 0(r15)
 	srli    r13, r13, 27
 	andi    r13, r13, 0x0f 	
 
-	movi    r20, 0b001
-	movi    r21, 0b100
+	movi    r20, 0b100
+	movi    r21, 0b001
+	movi    r22, 0b111
 	mov		r19, r0
-	movi    r14, 0x6    #assuming the threshold value is 6, sensor turns on at 9 
+	movi    r14, 0x7    #assuming the threshold value is 6, sensor turns on at 9 
 	movi 	r19, 0x0
 	blt		r11, r14, secondsen	
-	movi     r19, 0b001
+	movi     r19, 0b100
 
 secondsen:
-	blt 	r12, r14, move
+	blt 	r12, r14, thirdsen
 	movi     r19, 0b010
 
 thirdsen:
 	blt     r13, r14, move
-	movi     r19,  0b100
+	movi     r19,  0b001
 
 move:	
 	beq r19, r20, forward
 	beq r19, r21, backward
+	bne r19, r22, do_nothing
 	#br exitInterrupt
 	
 	
@@ -193,6 +202,8 @@ backward:
 	call 	timer
 	movia	r9, 0xFFFFFB0F		
 	stwio 	r9, 0(r15)					#Turn off motor keeping drill and material motor on		
+
+do_nothing:
 	
 exitInterrupt:
 	ldw 	et, 4(sp)
@@ -213,8 +224,8 @@ _start:
 	#call PrintStartingScreen();
 	movia 	r15, LEGOCONTROLLER
 	movia 	r8,  0x0						#Set it initially to stop mode
-	movi    r22, 0x0						#set the counter
-	movi    r23, 0x10						#set the final value for counter to stop
+	#movi    r22, 0x0						#set the counter
+	#movi    r23, 0x10						#set the final value for counter to stop
 	#Initialize the LEGO Controller
 	movia  	r9, 0x07f557ff       		#Set the direction registers
 	stwio 	r9, 4(r15)
