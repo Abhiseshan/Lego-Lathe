@@ -358,9 +358,10 @@ pollForPassword:
 poll:
 	#Set rows to input, coloums to output
 
-	ldwio 	r10, 12(r9)
-	andi 	r10, r10, 0xFF
-	beq 	r10, r0, poll
+	ldwio 	r10, 0(r9)
+	andi 	r10, r10, 0x0F
+	movi 	r11, 0x0F
+	beq 	r10, r11, poll
 
 	movia 	r10, 0xF0
 	stwio 	r10, 4(r9)
