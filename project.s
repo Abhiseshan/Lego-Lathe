@@ -299,7 +299,7 @@ setHexPIN1:
 	
 	ldw 	ra, 0(sp)
 	addi 	sp, sp, 4
-	ret
+	br 		poll
 	
 setHexPIN2:
 	subi	sp, sp, 4
@@ -314,7 +314,7 @@ setHexPIN2:
 	
 	ldw 	ra, 0(sp)
 	addi 	sp, sp, 4
-	ret
+	br 		poll
 
 setHexPIN3:
 	subi	sp, sp, 4
@@ -329,7 +329,7 @@ setHexPIN3:
 	
 	ldw 	ra, 0(sp)
 	addi 	sp, sp, 4
-	ret
+	br 		poll
 
 setHexPIN4:
 	subi	sp, sp, 4
@@ -344,7 +344,7 @@ setHexPIN4:
 	
 	ldw 	ra, 0(sp)
 	addi 	sp, sp, 4
-	ret	
+	br 		poll	
 
 
 pollForPassword:
@@ -353,8 +353,13 @@ pollForPassword:
 
 	movia 	r9, HEXKEYPAD
 	mov 	r2, r0
-	movi 	r11, 4
+	movi 	r12, 4
 
+	movia 	r10, 0xF0
+	stwio 	r10, 4(r9)
+	stwio	r0, 0(r9)
+
+	
 poll:
 	#Set rows to input, coloums to output
 
@@ -374,7 +379,7 @@ poll:
 	andi 	r10, r10, 0xF
 
 	#store to entered pin
-	or 	r2, r2, r10
+	or 		r2, r2, r10
 	srli 	r2, r2, 2
 
 	#Set coloums to input, rows to output	
@@ -385,17 +390,31 @@ poll:
 
 	ldwio 	r10, 0(r9)
 	andi 	r10, r10, 0xF 
-	or 	r2, r2, r10
-	subi	r11, r11, 1	
+	or 		r2, r2, r10
+	subi	r12, r12, 1	
 
 	#Check if the user has entered 4 pins
-	beq 	r0, r11, exitPassword
+	beq 	r0, r12	, exitPassword
 	srli 	r2, r2, 2
 
 	#Clear the edge capture register
+	
+	# Debounce loop 
+	movia 	r10,10000000
+DELAY:
+	subi 	r10, r10, 1
+	bne 	r10, r10, DELAY
+	
 	movi 	r10, 0xF
 	stwio 	r10, 12(r9)
 
+	movi 	r10, 3
+	beq 	r12, r10, setHexPIN1
+	movi 	r10, 2
+	beq 	r12, r10, setHexPIN1
+	movi 	r10, 1
+	beq 	r12, r10, setHexPIN1
+	
 	br 		poll
 
 exitPassword:
