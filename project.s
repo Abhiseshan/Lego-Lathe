@@ -357,6 +357,11 @@ pollForPassword:
 
 poll:
 	#Set rows to input, coloums to output
+
+	ldwio 	r10, 12(r9)
+	andi 	r10, r10, 0xFF
+	beq 	r10, r0, poll
+
 	movia 	r10, 0xF0
 	stwio 	r10, 4(r9)
 
@@ -396,5 +401,5 @@ exitPassword:
 	ldw 	ra, 0(sp)
 	addi 	sp, sp, 4
 	ret	
-	
+
 /***************************** END *****************************/
