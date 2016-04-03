@@ -6,7 +6,8 @@
 .equ LEGOCONTROLLER, 0xFF200060
 .equ time_baseMotor, 1000000
 .equ time_baseMotor2,20000000
-
+.equ SEVEN_SEG_03, 0xFF200020 
+.equ SEVEN_SEG_45, 0xFF200030
 /*
  * Fixed Registers
  * r8  - Status Register - If the machine is in stop=0/start=1 mode
@@ -75,7 +76,7 @@ STOP:
 	#Stop all the motors (drill motor and material rotation motor)
 	movia	r9, 0xffffffff			
 	stwio 	r9, 0(r15)	
-	
+	call    setHexOFF
 	br 		exitInterrupt
 	
 START:
@@ -85,7 +86,7 @@ START:
 	movia 	et, TIMER_INTERRUPT
 	movia 	r9, 0b0111
 	stw		r9, 4(et)
-
+	call    setHexON
 	call 	audio
 	
 InterruptTimer:
@@ -239,9 +240,102 @@ _start:
 #	movui 	r5, %hi(time_baseMotor)
 #	call 	timer
 #	br firstsensor	
-	
+	call setHexOFF
 	
 end_loop:
-	br 		end_loop
+	br 		end_loop		
+
+
+setHexOFF:
+	subi	sp, sp, 4
+	stw 	ra, 0(sp)
+
+	#Set the HEX Display to say OFF
+	movia 	r9, SEVEN_SEG_45
+	movia 	r10, 0x00003F71 
+	stwio 	r10, 0(r9)
+	movia 	r10, 0x71000000 
+	movia   r9, SEVEN_SEG_03
+	stwio 	r10, 0(r9)
+	ldw 	ra, 0(sp)
+	addi 	sp, sp, 4
+	ret
+	
+setHexON:
+	subi	sp, sp, 4
+	stw 	ra, 0(sp)
+
+	#Set the HEX Display to say OFF
+	movia 	r9, SEVEN_SEG_45
+	movia 	r10, 0x00003F37 
+	stwio 	r10, 0(r9)
+	movia 	r10, 0x00000000 
+	movia   r9, SEVEN_SEG_03
+	stwio 	r10, 0(r9)
+	ldw 	ra, 0(sp)
+	addi 	sp, sp, 4
+	ret
+	
+setHexPIN1:
+	subi	sp, sp, 4
+	stw 	ra, 0(sp)
+
+	#Set the HEX Display to say OFF
+	movia 	r9, SEVEN_SEG_45
+	movia 	r10, 0x00004000 
+	stwio 	r10, 0(r9)
+	movia 	r10, 0x00000000
+	stwio 	r10, 0(r9)
+	
+	ldw 	ra, 0(sp)
+	addi 	sp, sp, 4
+	ret
+	
+setHexPIN2:
+	subi	sp, sp, 4
+	stw 	ra, 0(sp)
+
+	#Set the HEX Display to say OFF
+	movia 	r9, SEVEN_SEG_45
+	movia 	r10, 0x00004040 
+	stwio 	r10, 0(r9)
+	movia 	r10, 0x00000000 
+	stwio 	r10, 0(r9)
+	
+	ldw 	ra, 0(sp)
+	addi 	sp, sp, 4
+	ret
+
+setHexPIN3:
+	subi	sp, sp, 4
+	stw 	ra, 0(sp)
+
+	#Set the HEX Display to say OFF
+	movia 	r9, SEVEN_SEG_45
+	movia 	r10, 0x00004040 
+	stwio 	r10, 0(r9)
+	movia 	r10, 0x40000000 
+	stwio 	r10, 0(r9)
+	
+	ldw 	ra, 0(sp)
+	addi 	sp, sp, 4
+	ret
+
+setHexPIN4:
+	subi	sp, sp, 4
+	stw 	ra, 0(sp)
+
+	#Set the HEX Display to say OFF
+	movia 	r9, SEVEN_SEG_45
+	movia 	r10, 0x00004040 
+	stwio 	r10, 0(r9)
+	movia 	r10, 0x40400000 
+	stwio 	r10, 0(r9)
+	
+	ldw 	ra, 0(sp)
+	addi 	sp, sp, 4
+	ret	
+
+
 	
 /***************************** END *****************************/
