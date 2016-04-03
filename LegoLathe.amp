@@ -28,13 +28,13 @@
             <linker_section name=".exceptions">
                 <memory_device>SDRAM.s1</memory_device>
                 <base_address>0x00000020</base_address>
-                <end_address>0x000001FF</end_address>
+                <end_address>0x00000EFF</end_address>
                 <required_section/>
                 <fixed_base_address/>
             </linker_section>
             <linker_section name=".text">
                 <memory_device>SDRAM.s1</memory_device>
-                <base_address>0x00000200</base_address>
+                <base_address>0x00000FFF</base_address>
                 <end_address>0x03FFFFFF</end_address>
                 <required_section/>
             </linker_section>

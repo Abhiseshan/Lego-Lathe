@@ -1,6 +1,7 @@
 .equ TIMER_INTERRUPT, 0xFF202000
+.equ TIMER_INTERRUPT2, 0xFF202000
 .equ interrupt_time, 100000000
-.equ interrupt_time2, 100000000
+.equ interrupt_time2,1000000000
 .equ PUSHBUTTONS, 0xFF200050
 .equ LEGOCONTROLLER, 0xFF200060
 .equ time_baseMotor, 100000
@@ -63,11 +64,12 @@ InterruptPushButton:
 	
 STOP:
 	movi 	r8, 0x0
-	
+	#call Machineisoff();
 	#Stop the interrupt timer
 	movia 	et, TIMER_INTERRUPT
 	movia 	r9, 0b1000
 	stw		r9, 4(et)	
+	
 	
 	#Stop all the motors (drill motor and material rotation motor)
 	movia	r9, 0xffffffff			
@@ -77,22 +79,22 @@ STOP:
 	
 START:
 	movi 	r8, 0x1
-	
+	#call Machineison();
 	#Start the timer interrupt
 	movia 	et, TIMER_INTERRUPT
 	movia 	r9, 0b0111
 	stw		r9, 4(et)
-	
+
 	call 	audio
 	
 InterruptTimer:
 	movia 	et, TIMER_INTERRUPT
 	stw 	r0, (et)  					#set timeout bit to 0
-	
 	#Check for start mode
 	movi 	r9, 0x1
 	bne 	r8, r9, exitInterrupt		#If mode not start, exit
-
+	addi    r22,r22,0x1
+	beq     r22,r23, STOP
 	#move the base motor	
 	movia  	r9, 0xffffff0c 				#enabling the motor 0, direction to forward
   	stwio  	r9, 0(r15)					#Turn on motor
@@ -136,17 +138,17 @@ readthirdsensor:
 
 	movi    r20, 0b001
 	movi    r21, 0b100
-	
+	mov		r19, r0
 	movi    r14, 0x6    #assuming the threshold value is 6, sensor turns on at 9 
 	movi 	r19, 0x0
 	blt		r11, r14, secondsen	
-	ori     r19, r19, 0b001
+	movi     r19, 0b001
 	secondsen:
 	blt 	r12, r14, move
-	ori     r19, r19, 0b010
+	movi     r19, 0b010
 	thirdsen:
 	blt     r13, r14, move
-	ori     r19, r19, 0b100
+	movi     r19,  0b100
 
 move:	
 	beq r19, r20, forward
@@ -189,15 +191,17 @@ exitInterrupt:
 .global _start
 
 _start: 
+	#call PrintStartingScreen();
 	movia 	r15, LEGOCONTROLLER
-	movia 	r8, 0x0						#Set it initially to stop mode
-	
+	movia 	r8,  0x0						#Set it initially to stop mode
+	movi    r22, 0x0						#set the counter
+	movi    r23, 0x10						#set the final value for counter to stop
 	#Initialize the LEGO Controller
 	movia  	r9, 0x07f557ff       		#Set the direction registers
 	stwio 	r9, 4(r15)
 	movia 	r9, 0xffffffff
 	stwio 	r9, 0(r15)
-
+	
 	
 	#Initialize the interrupt timer
 	movia 	r9, TIMER_INTERRUPT
