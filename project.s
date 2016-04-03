@@ -8,6 +8,9 @@
 .equ time_baseMotor2,20000000
 .equ SEVEN_SEG_03, 0xFF200020 
 .equ SEVEN_SEG_45, 0xFF200030
+.equ HEXKEYPAD, 0xFF200070
+.equ PASSWORD, 0x00000000
+
 /*
  * Fixed Registers
  * r8  - Status Register - If the machine is in stop=0/start=1 mode
@@ -80,9 +83,16 @@ STOP:
 	br 		exitInterrupt
 	
 START:
-	movi 	r8, 0x1
 	#call Machineison();
 	#Start the timer interrupt
+
+	# Checks if password is entered
+	call 	pollForPassword
+	movia 	r9, PASSWORD	
+	bne 	r9, r2, exitInterrupt 
+
+	movi 	r8, 0x1
+
 	movia 	et, TIMER_INTERRUPT
 	movia 	r9, 0b0111
 	stw		r9, 4(et)
@@ -337,5 +347,54 @@ setHexPIN4:
 	ret	
 
 
+pollForPassword:
+	subi	sp, sp, 4
+	stw 	ra, 0(sp)	
+
+	movia 	r9, HEXKEYPAD
+	mov 	r2, r0
+	movi 	r11, 4
+
+poll:
+	#Set rows to input, coloums to output
+	movia 	r10, 0xF0
+	stwio 	r10, 4(r9)
+
+	#drive output pins to 0
+	stwio	r0, 0(r9)
+
+	#Read coloum values
+	ldwio 	r10, 0(r9)
+	andi 	r10, r10, 0xF
+
+	#store to entered pin
+	ori 	r2, r2, r10
+	srli 	r2, r2, 2
+
+	#Set coloums to input, rows to output	
+	movia 	r10, 0x0F
+	stwio 	r10, 4(r9)
+
+	stwio 	r0, 0(r9)
+
+	ldwio 	r10, 0(r9)
+	andi 	r10, r10, 0xF 
+	ori 	r2, r2, r10
+	subi	r11, r11, 1	
+
+	#Check if the user has entered 4 pins
+	beq 	r0, r11, exitPassword
+	srli 	r2, r2, 2
+
+	#Clear the edge capture register
+	movi 	r10, 0xF
+	stwio 	r10, 12(r9)
+
+	br 		poll
+
+exitPassword:
+	ldw 	ra, 0(sp)
+	addi 	sp, sp, 4
+	ret	
 	
 /***************************** END *****************************/
