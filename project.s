@@ -9,7 +9,7 @@
 .equ SEVEN_SEG_03, 0xFF200020 
 .equ SEVEN_SEG_45, 0xFF200030
 .equ HEXKEYPAD, 0xFF200070
-.equ PASSWORD, 0x00000000
+.equ PASSWORD, 0xE0E0E0D0
 
 /*
  * Fixed Registers
@@ -75,7 +75,6 @@ STOP:
 	movia 	r9, 0b1000
 	stw		r9, 4(et)	
 	
-	
 	#Stop all the motors (drill motor and material rotation motor)
 	movia	r9, 0xffffffff			
 	stwio 	r9, 0(r15)	
@@ -87,6 +86,7 @@ START:
 	#Start the timer interrupt
 
 	# Checks if password is entered
+	call 	setHexPIN
 	call 	pollForPassword
 	call 	setHexOFF
 	movia 	r9, PASSWORD	
@@ -105,11 +105,13 @@ START:
 InterruptTimer:
 	movia 	et, TIMER_INTERRUPT
 	stw 	r0, (et)  					#set timeout bit to 0
+	
 	#Check for start mode
 	movi 	r9, 0x1
 	bne 	r8, r9, exitInterrupt		#If mode not start, exit
 	addi    r22,r22,0x1
 	beq     r22,r23, STOP
+	
 	#move the base motor	
 	movia  	r9, 0xFFFFFF0E				#enabling the motor 0, direction to forward
   	stwio  	r9, 0(r15)					#Turn on motor
@@ -158,10 +160,12 @@ readthirdsensor:
 	movi 	r19, 0x0
 	blt		r11, r14, secondsen	
 	movi     r19, 0b001
-	secondsen:
+
+secondsen:
 	blt 	r12, r14, move
 	movi     r19, 0b010
-	thirdsen:
+
+thirdsen:
 	blt     r13, r14, move
 	movi     r19,  0b100
 
@@ -258,7 +262,22 @@ _start:
 end_loop:
 	br 		end_loop		
 
+setHexPIN:
+	subi	sp, sp, 4
+	stw 	ra, 0(sp)
 
+	#Set the HEX Display to say OFF
+	movia 	r9, SEVEN_SEG_45
+	movia 	r10, 0x00007306 
+	stwio 	r10, 0(r9)
+	movia 	r9, SEVEN_SEG_03
+	movia 	r10, 0x37000000 
+	stwio 	r10, 0(r9)
+	
+	ldw 	ra, 0(sp)
+	addi 	sp, sp, 4
+	ret
+	
 setHexOFF:
 	subi	sp, sp, 4
 	stw 	ra, 0(sp)
@@ -285,6 +304,7 @@ setHexON:
 	movia 	r10, 0x00000000 
 	movia   r9, SEVEN_SEG_03
 	stwio 	r10, 0(r9)
+
 	ldw 	ra, 0(sp)
 	addi 	sp, sp, 4
 	ret
@@ -295,8 +315,9 @@ setHexPIN1:
 
 	#Set the HEX Display to say OFF
 	movia 	r9, SEVEN_SEG_45
-	movia 	r10, 0x0000CE00 
+	movia 	r10, 0x00007300 
 	stwio 	r10, 0(r9)
+	movia 	r9, SEVEN_SEG_03
 	movia 	r10, 0x00000020
 	stwio 	r10, 0(r9)
 	
@@ -310,8 +331,9 @@ setHexPIN2:
 
 	#Set the HEX Display to say OFF
 	movia 	r9, SEVEN_SEG_45
-	movia 	r10, 0x0000CE00 
+	movia 	r10, 0x00007300 
 	stwio 	r10, 0(r9)
+	movia 	r9, SEVEN_SEG_03
 	movia 	r10, 0x00002020 
 	stwio 	r10, 0(r9)
 	
@@ -325,15 +347,15 @@ setHexPIN3:
 
 	#Set the HEX Display to say OFF
 	movia 	r9, SEVEN_SEG_45
-	movia 	r10, 0x0000CE00
+	movia 	r10, 0x00007300
 	stwio 	r10, 0(r9)
+	movia 	r9, SEVEN_SEG_03
 	movia 	r10, 0x00202020 
 	stwio 	r10, 0(r9)
 	
 	ldw 	ra, 0(sp)
 	addi 	sp, sp, 4
 	br 		poll
-
 
 pollForPassword:
 	subi	sp, sp, 4
@@ -349,13 +371,13 @@ pollForPassword:
 
 	
 poll:
-	#Set rows to input, coloums to output
-
+	movia 	r9, HEXKEYPAD
 	ldwio 	r10, 0(r9)
 	andi 	r10, r10, 0x0F
 	movi 	r11, 0x0F
 	beq 	r10, r11, poll
 
+	#Set rows to input, coloums to output
 	movia 	r10, 0xF0
 	stwio 	r10, 4(r9)
 
@@ -368,7 +390,7 @@ poll:
 
 	#store to entered pin
 	or 		r2, r2, r10
-	srli 	r2, r2, 8
+	slli 	r2, r2, 4
 
 	#Set coloums to input, rows to output	
 	movia 	r10, 0x0F
@@ -383,20 +405,22 @@ poll:
 
 	#Check if the user has entered 4 pins
 	beq 	r0, r12	, exitPassword
-	srli 	r2, r2, 8
-
-	#Clear the edge capture register
+	slli 	r2, r2, 4
 	
 	# Debounce loop 
-	movia 	r10,10000000
+	movia 	r10, 10000000
 DELAY:
 	subi 	r10, r10, 1
-	bne 	r10, r10, DELAY
+	bne 	r10, r0, DELAY
 	
 	#Clear the buffer
 	movi 	r10, 0xF
 	stwio 	r10, 12(r9)
-
+	
+	movia 	r10, 0xF0
+	stwio 	r10, 4(r9)
+	stwio	r0, 0(r9)
+	
 	#Set hexDisplay keys
 	movi 	r10, 3
 	beq 	r12, r10, setHexPIN1
