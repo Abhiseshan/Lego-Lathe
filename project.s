@@ -1,11 +1,11 @@
 .equ TIMER_INTERRUPT, 0xFF202000
 .equ TIMER_INTERRUPT2, 0xFF202000
-.equ interrupt_time, 500000000
+.equ interrupt_time, 200000000
 .equ interrupt_time2,1000000000
 .equ PUSHBUTTONS, 0xFF200050
 .equ LEGOCONTROLLER, 0xFF200060
 .equ time_baseMotor, 1000000
-.equ time_baseMotor2,8000000
+.equ time_baseMotor2,11000000
 .equ SEVEN_SEG_03, 0xFF200020 
 .equ SEVEN_SEG_45, 0xFF200030
 .equ HEXKEYPAD, 0xFF200070
