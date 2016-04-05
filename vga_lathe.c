@@ -28,25 +28,27 @@ void write_char(int x, int y, char c) {
 void PrintStartingScreen() {
 
     clear_screen();
-	char *a = "Press start to turn on the machine";
+	char *a = "PRESS START";
 	int i=0;
 	for(i=0; i < strlen(a); i++)
 	{
 		write_char(20+i,20,a[i]);
 	}
-   
+    a[0] = '\0';
+	
     return ;
 }
 
 void Machineison()
 {
 	clear_screen();
-	char *a = "Machine is on";
+	char *a = "MACHINE IS ON, PLEASE STAY BACK";
 	int i=0;
 	for(i=0; i < strlen(a); i++)
 	{
 		write_char(20+i,20,a[i]);
 	}
+	 a[0] = '\0';
 	return ;
 	
 }
@@ -54,11 +56,12 @@ void Machineison()
 void Machineisoff()
 {
 	clear_screen();
-	char *a = "Machine is off, press start to start again";
+	char *a = "MACHINE IS OFF, PRESS START TO START AGAIN";
 	int i=0;
 	for(i=0; i < strlen(a); i++)
 	{
 		write_char(20+i,20,a[i]);
 	}
+	a[0] = '\0';
 	return ;
 }
