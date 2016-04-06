@@ -129,10 +129,6 @@ firstsensor:
 
 	movia r9, 0xFFFFFB0F				#enable sensor 0
 	stwio r9, 0(r15)
-	#ldwio	r10,0(r8)
-	#srli	r10,r10,11
-	#andi	r10,r10,0x1
-	#beq		r0,	r10,firstsensor
 	ldwio	r10,0(r8)
 	srli	r10,r10,11
 	andi	r10,r10,0x1
@@ -146,10 +142,6 @@ readfirstsensor:
 secondsensor:	
 	movia r9, 0xFFFFEF0F			#enable sensor 1 and motor 1
 	stwio r9, 0(r15)
-	#ldwio	r10,0(r8)
-	#srli	r10,r10,13
-	#andi	r10,r10,0x1
-	#bne		r0,	r10,secondsensor
 	ldwio	r10,0(r8)
 	srli	r10,r10,13
 	andi	r10,r10,0x1
@@ -163,10 +155,6 @@ readsecondsensor:
 thirdsensor:	
 	movia r9, 0xFFFFBF0F				#enable sensor 2 and motor 1
 	stwio r9, 0(r15)
-	#ldwio	r10,0(r8)
-	#srli	r10,r10,15
-	#andi	r10,r10,0x1
-	#beq		r0,	r10,thirdsensor
 	ldwio	r10,0(r8)
 	srli	r10,r10,15
 	andi	r10,r10,0x1
@@ -396,6 +384,9 @@ pollForPassword:
 	movia 	r10, 0xF0
 	stwio 	r10, 4(r9)
 	stwio	r0, 0(r9)
+	
+	movi 	r10, 0xFF
+	stwio 	r10, 12(r9)
 
 	
 poll:
