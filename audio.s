@@ -1,8 +1,7 @@
 .equ ADDR_AUDIODACFIFO, 0xFF203040
 .equ time_alarm, 1000
 .equ time_alarm_wait, 49000000
-.equ ALARM_SOUND, 0x9000000 
-.equ ALARM_SOUND1, 0x4000000
+.equ ALARM_SOUND, 0x60000000
 
 .global audio
 
@@ -21,21 +20,21 @@ audio:
 beep:	
 
 	movi 	r19, 10000
-	movi 	r20, 1000
+	movi 	r20, 100
 wave:	
 	movia 	r16, ADDR_AUDIODACFIFO
 	movia 	r17, ALARM_SOUND
-	stwio 	r17,	8(r16)      /* Echo to left channel */
-	stwio 	r17,	12(r16)     /* Echo to right channel */
+	stwio 	r17, 8(r16)      /* Echo to left channel */
+	stwio 	r17, 12(r16)     /* Echo to right channel */
 	
 	subi 	r20, r20, 1
 	bne 	r20, r20, wave
 	
-	movi 	r20, 1000
+	movi 	r20, 100
 wave2:
-	movia 	r17, ALARM_SOUND1
-	stwio 	r17,	8(r16)      /* Echo to left channel */
-	stwio 	r17,	12(r16)     /* Echo to right channel */
+	sub 	r17, r0, r17
+	stwio 	r17, 8(r16)      /* Echo to left channel */
+	stwio 	r17, 12(r16)     /* Echo to right channel */
 
 	subi 	r20, r20, 1
 	bne 	r20, r20, wave2
